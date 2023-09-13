@@ -1,0 +1,6 @@
+[
+    { "date": "300 BC", "event": "Some BC event" },
+    { "date": "100 AD", "event": "Some AD event" },
+    { "date": "500 BC", "event": "Another BC event" }
+    // Add more events here
+]

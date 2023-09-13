@@ -68,68 +68,63 @@
   });
 </script>
 
-<script>
-    // Function to load event data from an external JSON file
-    async function loadEventData() {
-        try {
-            const response = await fetch('events.json');
-            const eventData = await response.json();
-            return eventData;
-        } catch (error) {
-            console.error('Error loading event data:', error);
-            return [];
+    <script>
+        // Historical event data directly in JavaScript
+        const events = [
+            { date: "300 BC", event: "Some BC event" },
+            { date: "100 AD", event: "Some AD event" },
+            { date: "500 BC", event: "Another BC event" },
+            // Add more events here
+        ];
+
+        // Function to sort events chronologically with AD/BC consideration
+        function sortEvents(events) {
+            return events.sort((a, b) => {
+                const dateA = parseDate(a.date);
+                const dateB = parseDate(b.date);
+                return dateA - dateB;
+            });
         }
-    }
 
-    // Function to sort events chronologically with AD/BC consideration
-    function sortEvents(events) {
-        return events.sort((a, b) => {
-            const dateA = parseDate(a.date);
-            const dateB = parseDate(b.date);
-            return dateA - dateB;
-        });
-    }
+        // Function to parse dates considering BC/AD
+        function parseDate(dateStr) {
+            const parts = dateStr.split(' ');
+            const year = parseInt(parts[0]);
+            const era = parts[1];
 
-    // Function to parse dates considering BC/AD
-    function parseDate(dateStr) {
-        const parts = dateStr.split(' ');
-        const year = parseInt(parts[0]);
-        const era = parts[1];
-
-        if (era === "BC") {
-            return -year;
-        } else {
-            return year;
+            if (era === "BC") {
+                return -year;
+            } else {
+                return year;
+            }
         }
-    }
 
-    // Function to populate the table with sorted events
-    async function populateTable() {
-        const events = await loadEventData();
-        const sortedEvents = sortEvents(events);
-        const tableBody = document.getElementById("eventTableBody");
+        // Function to populate the table with sorted events
+        function populateTable() {
+            const sortedEvents = sortEvents(events);
+            const tableBody = document.getElementById("eventTableBody");
 
-        // Clear the existing table contents
-        tableBody.innerHTML = '';
+            // Clear the existing table contents
+            tableBody.innerHTML = '';
 
-        // Add events to the table
-        for (const event of sortedEvents) {
-            const row = document.createElement("tr");
-            const dateCell = document.createElement("td");
-            const eventCell = document.createElement("td");
+            // Add events to the table
+            for (const event of sortedEvents) {
+                const row = document.createElement("tr");
+                const dateCell = document.createElement("td");
+                const eventCell = document.createElement("td");
 
-            dateCell.textContent = event.date;
-            eventCell.textContent = event.event;
+                dateCell.textContent = event.date;
+                eventCell.textContent = event.event;
 
-            row.appendChild(dateCell);
-            row.appendChild(eventCell);
-            tableBody.appendChild(row);
+                row.appendChild(dateCell);
+                row.appendChild(eventCell);
+                tableBody.appendChild(row);
+            }
         }
-    }
 
-    // Call the populateTable function to initially populate the table
-    populateTable();
-</script>
+        // Call the populateTable function to initially populate the table
+        populateTable();
+    </script>
 
 
 </body>

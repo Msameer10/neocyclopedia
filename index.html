@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <!-- Icon Links -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <!-- W3 schools CSS -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!-- Bootstrap CSS -->
@@ -13,21 +14,28 @@
 <link rel="stylesheet" type="text/css" href="style.css">
   <title>Neocyclopedia</title>
 </head>
-<body >
+<body class="light">
  
 <!-- title -->
 <div class="container">
 
 <div class="logo text-center mt-4 mb-5">
-    <h1><a href="index.html"><span id="mh1">Neocyclopedia</span></a></h1>
+    <h1><a href="index.html"><span id="headerSpan" class="mh1-light">Neocyclopedia</span></a></h1>
 </div>
+
+
+ <!-- toggle button -->
+
+<button class="theme-toggle" onclick="toggleTheme()">
+    <i id="themeIcon" class="fas fa-sun"></i> <!-- Initially use sun icon for light theme -->
+</button>
 
 
   <!-- Content -->
 
 <h3 class="mt-3 mb-5">Historical Events</h3>
-<table id="eventTable">
-    <thead>
+<table id="eventTable" class="table text-center table-hover table-bordered">
+    <thead class="thead-dark">
         <tr>
             <th>Date</th>
             <th>Event</th>
@@ -126,6 +134,44 @@
         populateTable();
     </script>
 
+
+ <!-- script to toggle themes -->
+
+    <script>
+            // JavaScript code for event data and sorting (as provided earlier)
+
+        // Function to toggle between light and dark themes
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle("light");
+            body.classList.toggle("dark");
+
+            // Toggle the "table-dark" class on the table
+            const table = document.getElementById("eventTable");
+            table.classList.toggle("table-dark");
+
+            // Toggle the class of the headerSpan
+            const headerSpan = document.getElementById("headerSpan");
+            headerSpan.classList.toggle("mh1-light");
+            headerSpan.classList.toggle("mh1-dark");
+
+            // Save the theme preference to localStorage
+            const currentTheme = body.classList.contains("dark") ? "dark" : "light";
+            localStorage.setItem("themePreference", currentTheme);
+        }
+
+        // Function to load the saved theme preference from localStorage
+        function loadThemePreference() {
+            const savedTheme = localStorage.getItem("themePreference");
+            if (savedTheme === "dark") {
+                toggleTheme(); // Switch to the dark theme if it was saved
+            }
+        }
+
+        // Call the loadThemePreference function when the page loads
+        window.addEventListener("load", loadThemePreference);
+
+    </script>
 
 </body>
 </html>

@@ -14,7 +14,7 @@
   text-decoration: none;
 }
 
-#mh1{
+.mh1-light{
   font-family: Rosarivo;
   font-size: 1.1em;
   color: #14246E;
@@ -54,4 +54,45 @@
 
 #cprtxt{
   font-family: Lugrasimo;
+}
+
+
+
+/*dark theme*/
+
+body.dark {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.mh1-dark{
+  font-family: Rosarivo;
+  font-size: 1.1em;
+  color: #ffffff;
+}
+
+/* Style for the toggle button */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-left: auto;
+}
+
+ /* Style for the toggle button icon */
+.theme-toggle i {
+    font-size: 20px;
+    /* Set the icon color based on the theme */
+    color: #333333; /* Default to light theme color */
+}
+
+/* Icon color for dark theme */
+body.dark .theme-toggle i {
+    color: #ffffff;
 }

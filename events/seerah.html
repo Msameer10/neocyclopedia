@@ -1,4 +1,4 @@
-html_content = """
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,11 +100,3 @@ html_content = """
 
 </body>
 </html>
-"""
-
-file_names = ["conquestOfJerusalem","christTheRedeemer","seerah","alexandria","egyptRomanProvince","christopherColumbus"]  # List of file names
-
-for name in file_names:
-    file_name = name.replace(" ", "") + ".html"
-    with open(file_name, "w") as f:
-        f.write(html_content)

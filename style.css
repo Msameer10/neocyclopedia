@@ -31,6 +31,33 @@ h3{
 .exp{
   font-family: Nunito;
   font-size: 20px;
+  line-height: 1;
+}
+
+        .img-wrap {
+            max-width: 65%;
+            height: auto;
+            margin: 1rem;
+        }
+        .img-left {
+            float: left;
+            margin-right: 1rem;
+        }
+        .img-right {
+            float: right;
+            margin-left: 1rem;
+        }
+        @media (max-width: 576px) {
+            .img-left, .img-right {
+                float: none;
+                margin: 0 auto 1rem;
+                display: block;
+            }
+        }
+
+
+#easteregg{
+  text-decoration: none;
 }
 
 /* footer*/

@@ -4,7 +4,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Lugrasimo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Tangerine&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Yesteryear&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rosarivo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
@@ -25,7 +24,7 @@ h3{
   font-family: 'Quicksand';
 }
  h2{
-  font-family: Roboto;
+  font-family: 'Quicksand';
  }
  
 .exp{

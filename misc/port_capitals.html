@@ -1,0 +1,316 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="utf-8">
+<!-- Icon Links -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- W3 schools CSS -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Original CSS -->
+<link rel="stylesheet" type="text/css" href="../style.css">
+  <title>Neocyclopedia</title>
+</head>
+<body class="light">
+ 
+<!-- title -->
+<div class="container">
+
+<div class="logo text-center mt-4 mb-5">
+    <h1><a href="../index.html"><span id="headerSpan" class="mh1-light">Neocyclopedia</span></a></h1>
+</div>
+
+
+ <!-- toggle button -->
+
+<button class="theme-toggle" onclick="toggleTheme()">
+    <i id="themeIcon" class="fas fa-sun"></i> <!-- Initially use sun icon for light theme -->
+</button>
+
+
+  <!-- Content -->
+
+<div class="mt-5 mb-5">
+  <h2>Port or Not? World Capitals by the Water's Edge</h2>
+  <p class="exp mt-3">
+  Explore this list to discover which world capitals are situated along the shores of seas and oceans. Fair warning, this list might suprise you.
+  <br><br>
+  <span style="font-size: 14px;">Note: This total comprises 193 countries that are <a href="https://www.un.org/en/about-us/member-states">member states of the United Nations</a> and 2 countries that are non-member observer states: the Holy See and the State of Palestine and 1 dependency state: Taiwan, in alphabetical order. Not in the list - <a href="https://www.worldometers.info/geography/countries-of-the-world/#example">click here to know who they are</a>.</span>
+  <table id="eventTable" class="table text-center table-bordered table-responsive-sm table-striped">
+    <thead class="table-dark"><tr><th scope="col">Country</th><th scope="col">Capital</th><th scope="col">Port or Not</th></tr></thead>
+    <tbody id="eventTableBody">
+      <tr><td>Afghanistan</td><td>Kabul</td><td>Not a Port</td></tr>
+      <tr><td>Albania</td><td>Tirana</td><td>Not a Port</td></tr>
+      <tr><td>Algeria</td><td>Algiers</td><td>Port</td></tr>
+      <tr><td>Andorra</td><td>Andorra la Vella</td><td>Not a Port</td></tr>
+      <tr><td>Angola</td><td>Luanda</td><td>Port</td></tr>
+      <tr><td>Antigua and Barbuda</td><td>Saint John's</td><td>Port</td></tr>
+      <tr><td>Argentina</td><td>Buenos Aires</td><td>Port</td></tr>
+      <tr><td>Armenia</td><td>Yerevan</td><td>Not a Port</td></tr>
+      <tr><td>Australia</td><td>Canberra</td><td>Not a Port</td></tr>
+      <tr><td>Austria</td><td>Vienna</td><td>Not a Port</td></tr>
+      <tr><td>Azerbaijan</td><td>Baku</td><td>Port</td></tr>
+      <tr><td>Bahamas</td><td>Nassau</td><td>Port</td></tr>
+      <tr><td>Bahrain</td><td>Manama</td><td>Port</td></tr>
+      <tr><td>Bangladesh</td><td>Dhaka</td><td>Not a Port</td></tr>
+      <tr><td>Barbados</td><td>Bridgetown</td><td>Port</td></tr>
+      <tr><td>Belarus</td><td>Minsk</td><td>Not a Port</td></tr>
+      <tr><td>Belgium</td><td>Brussels</td><td>Not a Port</td></tr>
+      <tr><td>Belize</td><td>Belmopan</td><td>Not a Port</td></tr>
+      <tr><td>Benin</td><td>Porto-Novo</td><td>Port</td></tr>
+      <tr><td>Bhutan</td><td>Thimphu</td><td>Not a Port</td></tr>
+      <tr><td>Bolivia</td><td>Sucre</td><td>Not a Port</td></tr>
+      <tr><td>Bosnia and Herzegovina</td><td>Sarajevo</td><td>Not a Port</td></tr>
+      <tr><td>Botswana</td><td>Gaborone</td><td>Not a Port</td></tr>
+      <tr><td>Brazil</td><td>Brasília</td><td>Not a Port</td></tr>
+      <tr><td>Brunei</td><td>Bandar Seri Begawan</td><td>Port</td></tr>
+      <tr><td>Bulgaria</td><td>Sofia</td><td>Not a Port</td></tr>
+      <tr><td>Burkina Faso</td><td>Ouagadougou</td><td>Not a Port</td></tr>
+      <tr><td>Burundi</td><td>Gitega</td><td>Not a Port</td></tr>
+      <tr><td>Cabo Verde</td><td>Praia</td><td>Port</td></tr>
+      <tr><td>Cambodia</td><td>Phnom Penh</td><td>Not a Port</td></tr>
+      <tr><td>Cameroon</td><td>Yaoundé</td><td>Not a Port</td></tr>
+      <tr><td>Canada</td><td>Ottawa</td><td>Not a Port</td></tr>
+      <tr><td>Central African Republic</td><td>Bangui</td><td>Not a Port</td></tr>
+      <tr><td>Chad</td><td>N'Djamena</td><td>Not a Port</td></tr>
+      <tr><td>Chile</td><td>Santiago</td><td>Not a Port</td></tr>
+      <tr><td>China</td><td>Beijing</td><td>Not a Port</td></tr>
+      <tr><td>Colombia</td><td>Bogotá</td><td>Not a Port</td></tr>
+      <tr><td>Comoros</td><td>Moroni</td><td>Port</td></tr>
+      <tr><td>Congo, Democratic Republic of the</td><td>Kinshasa</td><td>Not a Port</td></tr>
+      <tr><td>Congo, Republic of the</td><td>Brazzaville</td><td>Not a Port</td></tr>
+      <tr><td>Costa Rica</td><td>San José</td><td>Not a Port</td></tr>
+      <tr><td>Croatia</td><td>Zagreb</td><td>Not a Port</td></tr>
+      <tr><td>Cuba</td><td>Havana</td><td>Port</td></tr>
+      <tr><td>Cyprus</td><td>Nicosia</td><td>Not a Port</td></tr>
+      <tr><td>Czech Republic</td><td>Prague</td><td>Not a Port</td></tr>
+      <tr><td>Denmark</td><td>Copenhagen</td><td>Port</td></tr>
+      <tr><td>Djibouti</td><td>Djibouti</td><td>Port</td></tr>
+      <tr><td>Dominica</td><td>Roseau</td><td>Port</td></tr>
+      <tr><td>Dominican Republic</td><td>Santo Domingo</td><td>Port</td></tr>
+      <tr><td>Ecuador</td><td>Quito</td><td>Not a Port</td></tr>
+      <tr><td>Egypt</td><td>Cairo</td><td>Not a Port</td></tr>
+      <tr><td>El Salvador</td><td>San Salvador</td><td>Not a Port</td></tr>
+      <tr><td>Equatorial Guinea</td><td>Malabo</td><td>Port</td></tr>
+      <tr><td>Eritrea</td><td>Asmara</td><td>Not a Port</td></tr>
+      <tr><td>Estonia</td><td>Tallinn</td><td>Port</td></tr>
+      <tr><td>Eswatini</td><td>Mbabane</td><td>Not a Port</td></tr>
+      <tr><td>Ethiopia</td><td>Addis Ababa</td><td>Not a Port</td></tr>
+      <tr><td>Fiji</td><td>Suva</td><td>Port</td></tr>
+      <tr><td>Finland</td><td>Helsinki</td><td>Port</td></tr>
+      <tr><td>France</td><td>Paris</td><td>Not a Port</td></tr>
+      <tr><td>Gabon</td><td>Libreville</td><td>Port</td></tr>
+      <tr><td>Gambia</td><td>Banjul</td><td>Port</td></tr>
+      <tr><td>Georgia</td><td>Tbilisi</td><td>Not a Port</td></tr>
+      <tr><td>Germany</td><td>Berlin</td><td>Not a Port</td></tr>
+      <tr><td>Ghana</td><td>Accra</td><td>Port</td></tr>
+      <tr><td>Greece</td><td>Athens</td><td>Port</td></tr>
+      <tr><td>Grenada</td><td>Saint George's</td><td>Port</td></tr>
+      <tr><td>Guatemala</td><td>Guatemala City</td><td>Not a Port</td></tr>
+      <tr><td>Guinea</td><td>Conakry</td><td>Port</td></tr>
+      <tr><td>Guinea-Bissau</td><td>Bissau</td><td>Port</td></tr>
+      <tr><td>Guyana</td><td>Georgetown</td><td>Port</td></tr>
+      <tr><td>Haiti</td><td>Port-au-Prince</td><td>Port</td></tr>
+      <tr><td>Honduras</td><td>Tegucigalpa</td><td>Not a Port</td></tr>
+      <tr><td>Hungary</td><td>Budapest</td><td>Not a Port</td></tr>
+      <tr><td>Iceland</td><td>Reykjavik</td><td>Port</td></tr>
+      <tr><td>India</td><td>New Delhi</td><td>Not a Port</td></tr>
+      <tr><td>Indonesia</td><td>Jakarta</td><td>Port</td></tr>
+      <tr><td>Iran</td><td>Tehran</td><td>Not a Port</td></tr>
+      <tr><td>Iraq</td><td>Baghdad</td><td>Not a Port</td></tr>
+      <tr><td>Ireland</td><td>Dublin</td><td>Port</td></tr>
+      <tr><td>Israel</td><td>Tel-Aviv</td><td>Port</td></tr>
+      <tr><td>Italy</td><td>Rome</td><td>Port</td></tr>
+      <tr><td>Jamaica</td><td>Kingston</td><td>Port</td></tr>
+      <tr><td>Japan</td><td>Tokyo</td><td>Port</td></tr>
+      <tr><td>Jordan</td><td>Amman</td><td>Not a Port</td></tr>
+      <tr><td>Kazakhstan</td><td>Astana</td><td>Not a Port</td></tr>
+      <tr><td>Kenya</td><td>Nairobi</td><td>Not a Port</td></tr>
+      <tr><td>Kiribati</td><td>Tarawa</td><td>Port</td></tr>
+      <tr><td>Korea, North</td><td>Pyongyang</td><td>Not a Port</td></tr>
+      <tr><td>Korea, South</td><td>Seoul</td><td>Not a Port</td></tr>
+      <tr><td>Kosovo</td><td>Pristina</td><td>Not a Port</td></tr>
+      <tr><td>Kuwait</td><td>Kuwait City</td><td>Port</td></tr>
+      <tr><td>Kyrgyzstan</td><td>Bishkek</td><td>Not a Port</td></tr>
+      <tr><td>Laos</td><td>Vientiane</td><td>Not a Port</td></tr>
+      <tr><td>Latvia</td><td>Riga</td><td>Port</td></tr>
+      <tr><td>Lebanon</td><td>Beirut</td><td>Port</td></tr>
+      <tr><td>Lesotho</td><td>Maseru</td><td>Not a Port</td></tr>
+      <tr><td>Liberia</td><td>Monrovia</td><td>Port</td></tr>
+      <tr><td>Libya</td><td>Tripoli</td><td>Port</td></tr>
+      <tr><td>Liechtenstein</td><td>Vaduz</td><td>Not a Port</td></tr>
+      <tr><td>Lithuania</td><td>Vilnius</td><td>Not a Port</td></tr>
+      <tr><td>Luxembourg</td><td>Luxembourg</td><td>Not a Port</td></tr>
+      <tr><td>Madagascar</td><td>Antananarivo</td><td>Not a Port</td></tr>
+      <tr><td>Malawi</td><td>Lilongwe</td><td>Not a Port</td></tr>
+      <tr><td>Malaysia</td><td>Kuala Lumpur</td><td>Not a Port</td></tr>
+      <tr><td>Maldives</td><td>Malé</td><td>Port</td></tr>
+      <tr><td>Mali</td><td>Bamako</td><td>Not a Port</td></tr>
+      <tr><td>Malta</td><td>Valletta</td><td>Port</td></tr>
+      <tr><td>Marshall Islands</td><td>Majuro</td><td>Port</td></tr>
+      <tr><td>Mauritania</td><td>Nouakchott</td><td>Port</td></tr>
+      <tr><td>Mauritius</td><td>Port Louis</td><td>Port</td></tr>
+      <tr><td>Mexico</td><td>Mexico City</td><td>Not a Port</td></tr>
+      <tr><td>Micronesia</td><td>Palikir</td><td>Not a Port</td></tr>
+      <tr><td>Moldova</td><td>Chisinau</td><td>Not a Port</td></tr>
+      <tr><td>Monaco</td><td>Monaco</td><td>Port</td></tr>
+      <tr><td>Mongolia</td><td>Ulaanbaatar</td><td>Not a Port</td></tr>
+      <tr><td>Montenegro</td><td>Podgorica</td><td>Not a Port</td></tr>
+      <tr><td>Morocco</td><td>Rabat</td><td>Port</td></tr>
+      <tr><td>Mozambique</td><td>Maputo</td><td>Port</td></tr>
+      <tr><td>Myanmar</td><td>Naypyidaw</td><td>Not a Port</td></tr>
+      <tr><td>Namibia</td><td>Windhoek</td><td>Not a Port</td></tr>
+      <tr><td>Nauru</td><td>Yaren</td><td>Port</td></tr>
+      <tr><td>Nepal</td><td>Kathmandu</td><td>Not a Port</td></tr>
+      <tr><td>Netherlands</td><td>Amsterdam</td><td>Not a Port</td></tr>
+      <tr><td>New Zealand</td><td>Wellington</td><td>Port</td></tr>
+      <tr><td>Nicaragua</td><td>Managua</td><td>Not a Port</td></tr>
+      <tr><td>Niger</td><td>Niamey</td><td>Not a Port</td></tr>
+      <tr><td>Nigeria</td><td>Abuja</td><td>Not a Port</td></tr>
+      <tr><td>North Macedonia</td><td>Skopje</td><td>Not a Port</td></tr>
+      <tr><td>Norway</td><td>Oslo</td><td>Not a Port</td></tr>
+      <tr><td>Oman</td><td>Muscat</td><td>Port</td></tr>
+      <tr><td>Pakistan</td><td>Islamabad</td><td>Not a Port</td></tr>
+      <tr><td>Palau</td><td>Ngerulmud</td><td>Not a Port</td></tr>
+      <tr><td>Palestine</td><td>Jerusalem</td><td>Not a Port</td></tr>
+      <tr><td>Panama</td><td>Panama City</td><td>Port</td></tr>
+      <tr><td>Papua New Guinea</td><td>Port Moresby</td><td>Port</td></tr>
+      <tr><td>Paraguay</td><td>Asunción</td><td>Not a Port</td></tr>
+      <tr><td>Peru</td><td>Lima</td><td>Port</td></tr>
+      <tr><td>Philippines</td><td>Manila</td><td>Port</td></tr>
+      <tr><td>Poland</td><td>Warsaw</td><td>Not a Port</td></tr>
+      <tr><td>Portugal</td><td>Lisbon</td><td>Port</td></tr>
+      <tr><td>Qatar</td><td>Doha</td><td>Port</td></tr>
+      <tr><td>Romania</td><td>Bucharest</td><td>Not a Port</td></tr>
+      <tr><td>Russia</td><td>Moscow</td><td>Not a Port</td></tr>
+      <tr><td>Rwanda</td><td>Kigali</td><td>Not a Port</td></tr>
+      <tr><td>Saint Kitts and Nevis</td><td>Basseterre</td><td>Port</td></tr>
+      <tr><td>Saint Lucia</td><td>Castries</td><td>Port</td></tr>
+      <tr><td>Saint Vincent and the Grenadines</td><td>Kingstown</td><td>Port</td></tr>
+      <tr><td>Samoa</td><td>Apia</td><td>Port</td></tr>
+      <tr><td>San Marino</td><td>San Marino</td><td>Not a Port</td></tr>
+      <tr><td>Sao Tome and Principe</td><td>São Tomé</td><td>Port</td></tr>
+      <tr><td>Saudi Arabia</td><td>Riyadh</td><td>Not a Port</td></tr>
+      <tr><td>Senegal</td><td>Dakar</td><td>Port</td></tr>
+      <tr><td>Serbia</td><td>Belgrade</td><td>Not a Port</td></tr>
+      <tr><td>Seychelles</td><td>Victoria</td><td>Port</td></tr>
+      <tr><td>Sierra Leone</td><td>Freetown</td><td>Port</td></tr>
+      <tr><td>Singapore</td><td>Singapore</td><td>Port</td></tr>
+      <tr><td>Slovakia</td><td>Bratislava</td><td>Not a Port</td></tr>
+      <tr><td>Slovenia</td><td>Ljubljana</td><td>Not a Port</td></tr>
+      <tr><td>Solomon Islands</td><td>Honiara</td><td>Port</td></tr>
+      <tr><td>Somalia</td><td>Mogadishu</td><td>Port</td></tr>
+      <tr><td>South Africa</td><td>Cape Town</td><td>Port</td></tr>
+      <tr><td>South Sudan</td><td>Juba</td><td>Not a Port</td></tr>
+      <tr><td>Spain</td><td>Madrid</td><td>Not a Port</td></tr>
+      <tr><td>Sri Lanka</td><td>Colombo</td><td>Port</td></tr>
+      <tr><td>Sudan</td><td>Khartoum</td><td>Not a Port</td></tr>
+      <tr><td>Suriname</td><td>Paramaribo</td><td>Port</td></tr>
+      <tr><td>Sweden</td><td>Stockholm</td><td>Not a Port</td></tr>
+      <tr><td>Switzerland</td><td>Bern</td><td>Not a Port</td></tr>
+      <tr><td>Syria</td><td>Damascus</td><td>Not a Port</td></tr>
+      <tr><td>Taiwan</td><td>Taipei</td><td>Port</td></tr>
+      <tr><td>Tajikistan</td><td>Dushanbe</td><td>Not a Port</td></tr>
+      <tr><td>Tanzania</td><td>Dodoma</td><td>Not a Port</td></tr>
+      <tr><td>Thailand</td><td>Bangkok</td><td>Port</td></tr>
+      <tr><td>Timor-Leste</td><td>Dili</td><td>Port</td></tr>
+      <tr><td>Togo</td><td>Lomé</td><td>Port</td></tr>
+      <tr><td>Tonga</td><td>Nuku'alofa</td><td>Port</td></tr>
+      <tr><td>Trinidad and Tobago</td><td>Port of Spain</td><td>Port</td></tr>
+      <tr><td>Tunisia</td><td>Tunis</td><td>Port</td></tr>
+      <tr><td>Turkey</td><td>Ankara</td><td>Not a Port</td></tr>
+      <tr><td>Turkmenistan</td><td>Ashgabat</td><td>Not a Port</td></tr>
+      <tr><td>Tuvalu</td><td>Funafuti</td><td>Port</td></tr>
+      <tr><td>Uganda</td><td>Kampala</td><td>Not a Port</td></tr>
+      <tr><td>Ukraine</td><td>Kiev</td><td>Not a Port</td></tr>
+      <tr><td>United Arab Emirates</td><td>Abu Dhabi</td><td>Port</td></tr>
+      <tr><td>United Kingdom</td><td>London</td><td>Not a Port</td></tr>
+      <tr><td>United States</td><td>Washington, D.C.</td><td>Not a Port</td></tr>
+      <tr><td>Uruguay</td><td>Montevideo</td><td>Port</td></tr>
+      <tr><td>Uzbekistan</td><td>Tashkent</td><td>Not a Port</td></tr>
+      <tr><td>Vanuatu</td><td>Port Vila</td><td>Port</td></tr>
+      <tr><td>Vatican City (Holy See)</td><td>Vatican City</td><td>Not a Port</td></tr>
+      <tr><td>Venezuela</td><td>Caracas</td><td>Port</td></tr>
+      <tr><td>Vietnam</td><td>Hanoi</td><td>Not a Port</td></tr>
+      <tr><td>Yemen</td><td>Sana'a</td><td>Not a Port</td></tr>
+      <tr><td>Zambia</td><td>Lusaka</td><td>Not a Port</td></tr>
+      <tr><td>Zimbabwe</td><td>Harare</td><td>Not a Port</td></tr>
+    </tbody>
+  </table><br>
+  <span style="font-size: 18px;">
+    <b>Total:</b> 196 <br>
+    <b>Port:</b> 86 <br>
+    <b>Not a Port:</b> 110 <br>
+  </span>
+  </p>
+</div>
+
+</div>
+
+  <!-- footer -->
+
+<div class="footer text-center mt-5">
+  <p class="mb-5 pb-5 ftrtxt"><span class="subtxt1">Neocyclopedia</span><span> x </span><a href="https://samineon.com" style="text-decoration: none;"><span class="subtxt2">Sami</span><span class="subtxt3">neon</span></a></p>
+  <p>Copyright &copy; <span id="cprtxt" style="font-family: Arial, sans-serif;"></span> <span class="subtxt1">Neocyclopedia</span>. All rights reserved.</p>
+</div>
+
+
+
+
+  <!-- Scripts -->
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const currentYear = new Date().getFullYear();
+    const copyrightYearElement = document.getElementById("cprtxt");
+    
+    if (copyrightYearElement) {
+      copyrightYearElement.textContent = currentYear;
+    }
+  });
+</script>
+
+<!-- script to toggle themes -->
+
+<script>
+  // Function to toggle between light and dark themes
+  function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle("light");
+    body.classList.toggle("dark");
+
+    // Toggle the "table-dark" class on the table
+    const table = document.getElementById("eventTable");
+    table.classList.toggle("table-dark");
+
+    // Toggle the class of the headerSpan
+    const headerSpan = document.getElementById("headerSpan");
+    headerSpan.classList.toggle("mh1-light");
+    headerSpan.classList.toggle("mh1-dark");
+
+    // Save the theme preference to localStorage
+    const currentTheme = body.classList.contains("dark") ? "dark" : "light";
+    localStorage.setItem("themePreference", currentTheme);
+  }
+
+  // Function to load the saved theme preference from localStorage
+  function loadThemePreference() {
+    const savedTheme = localStorage.getItem("themePreference");
+    if (savedTheme === "dark") {
+      toggleTheme(); // Switch to the dark theme if it was saved
+    }
+  }
+
+  // Call the loadThemePreference function when the page loads
+  window.addEventListener("load", loadThemePreference);
+
+</script>
+
+</body>
+</html>

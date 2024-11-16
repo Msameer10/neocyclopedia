@@ -70,16 +70,8 @@ h3{
   font-family: Rosarivo;
 }
 
-.subtxt2 , .subtxt3{
+.subtxt2 {
   font-family: Trajan Pro, Cinzel;
-}
-
-.subtxt2{
-  color: #E74C3C;
-}
-
-.subtxt3{
-  color: #2471A3;
 }
 
 .footer {
@@ -100,7 +92,7 @@ h3{
 /*dark theme*/
 
 body.dark {
-  background-color: #333333;
+  background-color: #000000;
   color: #ffffff;
 }
 

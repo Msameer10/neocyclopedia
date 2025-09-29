@@ -1,4 +1,4 @@
-/*font*/
+/* fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
@@ -7,93 +7,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Rosarivo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-
-/*content*/
-
-.logo h1 a{
-  text-decoration: none;
-}
+/* content */
+.logo h1 a { text-decoration: none; }
 
 .mh1-light{
   font-family: Rosarivo;
   font-size: 1.1em;
   color: #14246E;
-}
-
-h3{
-  font-family: 'Quicksand';
-}
- h2{
-  font-family: 'Quicksand';
- }
- 
-.exp{
-  font-family: Nunito;
-  font-size: 20px;
-  line-height: 1;
-}
-
-        .img-wrap {
-            max-width: 65%;
-            height: auto;
-            margin: 1rem;
-        }
-        .img-left {
-            float: left;
-            margin-right: 1rem;
-        }
-        .img-right {
-            float: right;
-            margin-left: 1rem;
-        }
-        @media (max-width: 576px) {
-            .img-left, .img-right {
-                float: none;
-                margin: 0 auto 1rem;
-                display: block;
-            }
-        }
-
-
-#easteregg{
-  text-decoration: none;
-}
-
-/* footer*/
-
-.ftrtxt{
-  background: transparent;
-  font-size: 1.5em;
-}
-
-.subtxt1{
-  font-family: Rosarivo;
-}
-
-.subtxt2 {
-  font-family: Trajan Pro, Cinzel;
-}
-
-.footer {
-  background: #111111;
-  color: white;
-  padding: 8vh 20vw;
-  border-top: 2px solid #333333;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  font-family: Arial, sans-serif;
-}
-
-#cprtxt{
-  font-family: Lugrasimo;
-}
-
-
-
-/*dark theme*/
-
-body.dark {
-  background-color: #000000;
-  color: #ffffff;
 }
 
 .mh1-dark{
@@ -102,28 +22,80 @@ body.dark {
   color: #ffffff;
 }
 
-/* Style for the toggle button */
+h3, h2 { font-family: 'Quicksand'; }
+
+.exp{
+  font-family: Nunito;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.img-wrap { max-width: 65%; height: auto; margin: 1rem; }
+.img-left { float: left; margin-right: 1rem; }
+.img-right { float: right; margin-left: 1rem; }
+@media (max-width: 576px) {
+  .img-left, .img-right {
+    float: none;
+    margin: 0 auto 1rem;
+    display: block;
+  }
+}
+
+#easteregg { text-decoration: none; }
+
+/* footer */
+.ftrtxt{ background: transparent; font-size: 1.5em; }
+.subtxt1{ font-family: Rosarivo; }
+.subtxt2{ font-family: Trajan Pro, Cinzel; }
+.footer {
+  background: #111111; color: white; padding: 8vh 20vw;
+  border-top: 2px solid #333333;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+  font-family: Arial, sans-serif;
+}
+#cprtxt{ font-family: Lugrasimo; }
+
+/* dark theme */
+body.dark { background-color: #000; color: #fff; }
+
+/* toggle button */
 .theme-toggle {
-  width: 40px;
-  height: 40px;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  margin-left: auto;
+  width: 40px; height: 40px; border: none; background: transparent; cursor: pointer;
+  display: flex; justify-content: center; align-items: center; border-radius: 50%;
+}
+.theme-toggle i { font-size: 20px; color: #333; }
+body.dark .theme-toggle i { color: #fff; }
+
+/* flags: italic colored text (no background) */
+.flag-token {
+  font-weight: 600;
+  font-size: 0.95em;
+  letter-spacing: 0.02em;
+  font-style: italic;          /* ➜ NEW: italic */
+}
+.flag-l { color: #0d6efd; }    /* blue: legendary/uncertain */
+.flag-t { color: #00E600; }    /* green: traditional */
+.flag-a { color: #fd7e14; }    /* amber: approximate */
+
+.date-cell { white-space: nowrap; }
+
+/* clickable rows affordance */
+.timeline-row { cursor: pointer; }
+.timeline-row:hover { filter: brightness(0.98); }
+
+/* --- Dark theme table niceties --- */
+body.dark .table.table-dark {
+  /* Slightly lighter border so rows are readable in dark */
+  --bs-border-color: rgba(255,255,255,0.15);
 }
 
- /* Style for the toggle button icon */
-.theme-toggle i {
-    font-size: 20px;
-    /* Set the icon color based on the theme */
-    color: #333333; /* Default to light theme color */
+body.dark .table.table-dark.table-striped > tbody > tr:nth-of-type(odd) > * {
+  /* very subtle striping in dark */
+  --bs-table-accent-bg: rgba(255,255,255,0.03);
 }
 
-/* Icon color for dark theme */
-body.dark .theme-toggle i {
-    color: #ffffff;
+body.dark .table.table-dark > :not(caption) > * > * {
+  /* ensure cell separators show up on dark */
+  border-color: rgba(255,255,255,0.12);
 }
+

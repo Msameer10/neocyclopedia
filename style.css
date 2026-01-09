@@ -213,3 +213,43 @@ body.dark{
   }
   .doc-title{ font-size: 22px; }
 }
+
+
+/* Integrated PDF content block (no special page container) */
+.pdf-article h2{
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+}
+
+.pdf-article h4{
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 700;
+  margin-top: 1.25rem;
+}
+
+.pdf-figure{
+  margin: 1.25rem 0;
+  text-align: center;
+}
+
+.pdf-figure img{
+  max-width: 70%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Optional: caption styling */
+.pdf-caption{
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* Optional: make list spacing nicer */
+.pdf-article ul{
+  margin-top: 0.75rem;
+}
+
+.pdf-article ul, p {
+  font-size: 20px;
+}

@@ -140,6 +140,7 @@ body.dark{
 .doc-title{
   font-size: 28px;
   font-weight: 700;
+  font-family: "Times New Roman", Times, serif;
   margin: 0 0 18px 0;
   color: var(--doc-text);
 }
@@ -147,6 +148,7 @@ body.dark{
 .doc-section{
   font-size: 18px;
   font-weight: 700;
+  font-family: "Times New Roman", Times, serif;
   margin: 22px 0 10px;
   color: var(--doc-text);
   text-decoration: underline;

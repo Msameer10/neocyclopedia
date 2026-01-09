@@ -149,10 +149,11 @@ body.dark{
   font-weight: 700;
   margin: 22px 0 10px;
   color: var(--doc-text);
+  text-decoration: underline;
 }
 
 .doc-p{
-  font-size: 16px;
+  font-size: 18px;
   margin: 0 0 14px 0;
   color: var(--doc-text);
 }

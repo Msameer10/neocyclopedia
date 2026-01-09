@@ -99,3 +99,114 @@ body.dark .table.table-dark > :not(caption) > * > * {
   border-color: rgba(255,255,255,0.12);
 }
 
+/* =========================
+   Paper document (only affects pages that use .doc-page)
+   Works with body.light/body.dark toggles site-wide
+   ========================= */
+
+body.light{
+  --doc-bg: #ffffff;
+  --doc-text: #111;
+  --doc-muted: #555;
+  --doc-rule: #e6e6e6;
+  --doc-shadow: 0 8px 28px rgba(0,0,0,0.08);
+  --doc-border: #f0f0f0;
+}
+
+body.dark{
+  --doc-bg: #141822;
+  --doc-text: #e9edf4;
+  --doc-muted: #b7c0cf;
+  --doc-rule: rgba(255,255,255,0.12);
+  --doc-shadow: 0 10px 30px rgba(0,0,0,0.55);
+  --doc-border: rgba(255,255,255,0.08);
+}
+
+/* Paper container */
+.doc-page{
+  max-width: 850px;
+  margin: 48px auto;
+  padding: 56px 64px;
+  background: var(--doc-bg);
+  color: var(--doc-text);
+  border: 1px solid var(--doc-border);
+  box-shadow: var(--doc-shadow);
+  border-radius: 10px;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.6;
+}
+
+/* Headings and paragraphs */
+.doc-title{
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 18px 0;
+  color: var(--doc-text);
+}
+
+.doc-section{
+  font-size: 18px;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--doc-text);
+}
+
+.doc-p{
+  font-size: 16px;
+  margin: 0 0 14px 0;
+  color: var(--doc-text);
+}
+
+.doc-divider{
+  border: none;
+  border-top: 1px solid var(--doc-rule);
+  margin: 22px 0;
+}
+
+/* References */
+.refs-subtitle{
+  font-size: 16px;
+  font-weight: 700;
+  margin: 14px 0 8px;
+  color: var(--doc-text);
+}
+
+.refs-note{
+  font-size: 14px;
+  color: var(--doc-muted);
+  margin: 0 0 14px 0;
+}
+
+.refs-list{
+  margin: 0;
+  padding-left: 18px;
+}
+
+.refs-item{
+  margin: 0 0 10px 0;
+  color: var(--doc-text);
+}
+
+.refs-q{
+  font-weight: 700;
+}
+
+/* Arabic snippets */
+.ayah-ar{
+  display: inline-block;
+  direction: rtl;
+  unicode-bidi: isolate;
+  font-family: "Amiri","Scheherazade New","Noto Naskh Arabic",serif;
+  font-size: 16px;
+  margin: 0 6px;
+  color: var(--doc-text);
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  .doc-page{
+    padding: 28px 22px;
+    margin: 24px 12px;
+  }
+  .doc-title{ font-size: 22px; }
+}

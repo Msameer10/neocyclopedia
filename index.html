@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-<!-- Font Awesome (modern) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<!-- Bootstrap 5 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="stylesheet" href="style.css">
-<title>Neocyclopedia</title>
+  <link rel="stylesheet" href="style.css">
+  <title>Neocyclopedia</title>
 </head>
+
 <body class="light">
-<div class="container">
+  <div class="container">
 
-  <div class="d-flex align-items-center justify-content-between mt-4 mb-3">
-    <div class="logo text-center flex-grow-1">
-      <h1 class="m-0"><a href="index.html" class="text-decoration-none"><span id="headerSpan" class="mh1-light">Neocyclopedia</span></a></h1>
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between mt-4 mb-3">
+      <div class="logo text-center flex-grow-1">
+        <h1 class="m-0">
+          <a href="index.html" class="text-decoration-none">
+            <span id="headerSpan" class="mh1-light">Neocyclopedia</span>
+          </a>
+        </h1>
+      </div>
+
+      <button id="themeToggle" class="theme-toggle ms-3" type="button" aria-label="Toggle theme">
+        <i id="themeIcon" class="fa-solid fa-sun"></i>
+      </button>
     </div>
-    <button class="theme-toggle ms-3" type="button" aria-label="Toggle theme" onclick="toggleTheme()">
-      <i id="themeIcon" class="fa-solid fa-sun"></i>
-    </button>
-  </div>
 
-  <h3 class="mt-2 mb-2 text-center">Historical Timeline</h3>
-  <p class="mb-3 text-center" style="font-size:13px;">
-    <a id="easteregg" href="misc/main.html">(click on any element of interest to know more…)</a>
-  </p>
+    <h3 class="mt-2 mb-2 text-center">Historical Timeline</h3>
 
-  <!-- tiny legend using your lowercase tokens -->
-    <!-- tiny legend using lowercase tokens -->
+    <p class="mb-3 text-center small">
+      <a id="easteregg" href="misc/main.html">(click on any element of interest to know more…)</a>
+    </p>
+
+    <!-- Legend -->
     <div class="text-center small mb-3">
       <span class="flag-token flag-l">l.</span> <span class="me-2">legendary/uncertain</span>
       <span class="flag-token flag-t">t.</span> <span class="me-2">traditionally dated</span>
@@ -41,519 +48,564 @@
       <span>(<em>c.</em> = circa)</span>
     </div>
 
+    <!-- Search bar -->
+    <div class="row justify-content-center align-items-center g-2 m-2">
+      <div class="col-12 col-md-9 col-lg-7">
+        <div class="input-group input-group-sm shadow-sm">
+          <span class="input-group-text bg-body border-end-0">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
 
-  <div class="table-responsive">
-    <table id="eventTable" class="table table-hover table-bordered table-striped align-middle text-center">
-      <thead class="table-dark">
-        <tr>
-          <th>Date</th>
-          <th>Event</th>
-          <th>Region</th>
-        </tr>
-      </thead>
-      <tbody id="eventTableBody"></tbody>
-    </table>
+          <input
+            id="timelineSearch"
+            class="form-control border-start-0"
+            placeholder="Search events, regions, dates…"
+            autocomplete="off"
+          />
+
+          <button id="clearSearch" class="btn btn-outline-secondary" type="button" aria-label="Clear search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-auto text-center text-md-start small text-body-secondary">
+        <span>&emsp;Total Events: </span><span id="timelineCount"></span>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap mx-auto mt-5">
+      <div class="table-responsive">
+        <table id="eventTable" class="table table-sm table-hover table-striped align-middle text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>Date</th>
+              <th>Event</th>
+              <th>Region</th>
+            </tr>
+          </thead>
+          <tbody id="eventTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 
-</div>
+  <!-- Meta -->
+  <p class="container text-center mt-5">Last edited: 2026 Feb 8</p>
+  <p class="container text-center mb-5">Version: 4.0</p>
 
-<p class="container text-center mt-5">Last edited: 2025 Sep 28</p>
-<p class="container text-center mb-5">Version: 3.2</p>
+  <!-- Footer -->
+  <div class="footer text-center mt-5">
+    <p class="mb-5 pb-5 ftrtxt">
+      <span class="subtxt1">Neocyclopedia</span><span> x </span>
+      <a href="https://www.sameerion.com" class="text-decoration-none">
+        <span class="subtxt2">Sameerion</span>
+      </a>
+    </p>
 
-<div class="footer text-center mt-5">
-  <p class="mb-5 pb-5 ftrtxt">
-    <span class="subtxt1">Neocyclopedia</span><span> x </span>
-    <a href="https://www.sameerion.com" class="text-decoration-none"><span class="subtxt2">Sameerion</span></a>
-  </p>
-  <p>Copyright © <span id="cprtxt" style="font-family: Arial, sans-serif;"></span> <span class="subtxt1">Neocyclopedia</span>. All rights reserved.</p>
-</div>
+    <p>
+      Copyright © <span id="cprtxt" style="font-family: Arial, sans-serif;"></span>
+      <span class="subtxt1">Neocyclopedia</span>. All rights reserved.
+    </p>
+  </div>
 
-<script>
-  // footer year
-  document.addEventListener("DOMContentLoaded", function () {
-    const y = new Date().getFullYear();
-    const el = document.getElementById("cprtxt");
-    if (el) el.textContent = y;
-  });
-</script>
+  <script>
+    /**
+     * DATA RULES (your preferences)
+     * - flags: a., l., t. (lowercase + period). show BEFORE the date. example: "l.t. 1200 BC"
+     * - multiple flags allowed; order doesn't matter visually; we keep your order
+     * - NO 'c' flag
+     * - Region modern names must render in [square brackets] (we'll auto-convert "(...)" to "[...]")
+     */
 
-<script>
-  /**
-   * DATA RULES (your preferences)
-   * - flags: a., l., t. (lowercase + period). show BEFORE the date. example: "l.t. 1200 BC"
-   * - multiple flags allowed; order doesn't matter visually; we keep your order
-   * - NO 'c' flag
-   * - Region modern names must render in [square brackets] (we'll auto-convert "(...)" to "[...]")
-   */
+    const events = [
+      { flags: "a.", date: "c. 300000 BC", event: "Emergence of Homo sapiens", area: "Africa [Various regions]", url: "events/homosapiens.html" },
+      { flags: "", date: "1757 AD", event: "Battle of Plassey", area: "Bengal Subah [Mughal Bengal]", url: "events/.html" },
+      { flags: "", date: "732 AD", event: "Battle of Tours", area: "Tours, France", url: "events/.html" },
+      { flags: "a.", date: "c. 3500–3000 BC", event: "Invention of the wheel", area: "Various regions", url: "events/wheelInvention.html" },
 
-  const events = [
-  { flags: "a.", date: "c. 300000 BC", event: "Emergence of Homo sapiens", area: "Africa [Various regions]", url: "events/homosapiens.html" },
+      { flags: "l.t.", date: "c. 600 BC", event: "Hanging Gardens of Babylon", area: "Babylon [Iraq]", url: "events/hangingGardens.html" },
 
-  { flags: "a.", date: "c. 3500–3000 BC", event: "Invention of the wheel", area: "Various regions", url: "events/wheelInvention.html" },
+      { flags: "", date: "224 AD", event: "Sasanian Empire established", area: "Persia [Iran]", url: "events/sassanianEmpire.html" },
 
-  { flags: "l.t.", date: "c. 600 BC", event: "Hanging Gardens of Babylon", area: "Babylon [Iraq]", url: "events/hangingGardens.html" },
+      { flags: "a.", date: "c. 1235 AD", event: "Mali Empire founded", area: "West Africa", url: "events/maliEmpire.html" },
 
-  { flags: "", date: "224 AD", event: "Sasanian Empire established", area: "Persia [Iran]", url: "events/sassanianEmpire.html" },
+      { flags: "", date: "1324–1325 AD", event: "Mansa Musa’s pilgrimage (Hajj) to Mecca", area: "West Africa → Mecca [Saudi Arabia]", url: "events/mansaMusa.html" },
 
-  { flags: "a.", date: "c. 1235 AD", event: "Mali Empire founded", area: "West Africa", url: "events/maliEmpire.html" },
+      { flags: "", date: "1994 AD", event: "End of apartheid", area: "South Africa", url: "events/endOfApartheid.html" },
 
-  { flags: "", date: "1324–1325 AD", event: "Mansa Musa’s pilgrimage (Hajj) to Mecca", area: "West Africa → Mecca [Saudi Arabia]", url: "events/mansaMusa.html" },
+      { flags: "", date: "1949 AD", event: "People’s Republic of China founded", area: "China", url: "events/china.html" },
 
-  { flags: "", date: "1994 AD", event: "End of apartheid", area: "South Africa", url: "events/endOfApartheid.html" },
+      { flags: "", date: "629 AD", event: "Battle of Mu'tah", area: "Mu'tah [Jordan]", url: "events/battleOfMutah.html" },
 
-  { flags: "", date: "1949 AD", event: "People’s Republic of China founded", area: "China", url: "events/china.html" },
+      { flags: "", date: "634 AD", event: "Battle of Firaz", area: "Near the Euphrates River [Iraq/Syria]", url: "events/battleOfFiraz.html" },
 
-  { flags: "", date: "629 AD", event: "Battle of Mu'tah", area: "Mu'tah [Jordan]", url: "events/battleOfMutah.html" },
+      { flags: "a.", date: "c. 1650–1730 AD", event: "Golden Age of Piracy", area: "Caribbean Sea and Atlantic Ocean", url: "events/goldenOfPiracy.html" },
 
-  { flags: "", date: "634 AD", event: "Battle of Firaz", area: "Near the Euphrates River [Iraq/Syria]", url: "events/battleOfFiraz.html" },
+      { flags: "", date: "31 BC", event: "Battle of Actium", area: "Actium [Greece]", url: "events/battleOfActium.html" },
 
-  { flags: "a.", date: "c. 1650–1730 AD", event: "Golden Age of Piracy", area: "Caribbean Sea and Atlantic Ocean", url: "events/goldenOfPiracy.html" },
+      { flags: "a.", date: "c. 1760 AD", event: "Start of the Industrial Revolution", area: "Great Britain [United Kingdom]", url: "events/industrialRevolution.html" },
 
-  { flags: "", date: "31 BC", event: "Battle of Actium", area: "Actium [Greece]", url: "events/battleOfActium.html" },
+      { flags: "", date: "1950–1953 AD", event: "Korean War", area: "Korean Peninsula [North Korea/South Korea]", url: "events/koreanWar.html" },
 
-  { flags: "a.", date: "c. 1760 AD", event: "Start of the Industrial Revolution", area: "Great Britain [United Kingdom]", url: "events/industrialRevolution.html" },
+      { flags: "", date: "338 BC", event: "Philip II conquers Greece (Chaeronea)", area: "Ancient Greece [Greece]", url: "events/philipTwo.html" },
 
-  { flags: "", date: "1950–1953 AD", event: "Korean War", area: "Korean Peninsula [North Korea/South Korea]", url: "events/koreanWar.html" },
+      { flags: "", date: "637 AD", event: "Conquest of Jerusalem under ʿUmar", area: "Jerusalem [Palestine]", url: "events/conquestOfJerusalem.html" },
 
-  { flags: "", date: "338 BC", event: "Philip II conquers Greece (Chaeronea)", area: "Ancient Greece [Greece]", url: "events/philipTwo.html" },
+      { flags: "a.", date: "c. 2600–2400 BC", event: "Stonehenge major stone settings", area: "Wiltshire [England]", url: "events/stonehenge.html" },
 
-  { flags: "", date: "637 AD", event: "Conquest of Jerusalem under ʿUmar", area: "Jerusalem [Palestine]", url: "events/conquestOfJerusalem.html" },
+      { flags: "", date: "256 AD", event: "Siege of Dura-Europos", area: "Near Dura-Europos [Syria]", url: "events/battleOfDura.html" },
 
-  { flags: "a.", date: "c. 2600–2400 BC", event: "Stonehenge major stone settings", area: "Wiltshire [England]", url: "events/stonehenge.html" },
+      { flags: "t.a.", date: "early 3rd c. BC", event: "Library of Alexandria flourishes", area: "Alexandria, Ptolemaic Kingdom [Egypt]", url: "events/libraryOfAlexandria.html" },
 
-  { flags: "", date: "256 AD", event: "Siege of Dura-Europos", area: "Near Dura-Europos [Syria]", url: "events/battleOfDura.html" },
+      { flags: "a.", date: "c. 221 BC", event: "Great Wall consolidated under Qin (earlier walls existed)", area: "Northern China", url: "events/greatWall.html" },
 
-  { flags: "t.a.", date: "early 3rd c. BC", event: "Library of Alexandria flourishes", area: "Alexandria, Ptolemaic Kingdom [Egypt]", url: "events/libraryOfAlexandria.html" },
+      { flags: "", date: "1000 AD", event: "Kingdom of Hungary (Stephen I crowned)", area: "Hungary", url: "events/hungarians.html" },
 
-  { flags: "a.", date: "c. 221 BC", event: "Great Wall consolidated under Qin (earlier walls existed)", area: "Northern China", url: "events/greatWall.html" },
+      { flags: "", date: "1346 AD", event: "Serbian Empire under Stefan Dušan", area: "Serbia", url: "events/serbianEmpire.html" },
 
-  { flags: "", date: "1000 AD", event: "Kingdom of Hungary (Stephen I crowned)", area: "Hungary", url: "events/hungarians.html" },
+      { flags: "", date: "1922 AD", event: "USSR formed", area: "Russia and other Soviet Republics", url: "events/ussr.html" },
 
-  { flags: "", date: "1346 AD", event: "Serbian Empire under Stefan Dušan", area: "Serbia", url: "events/serbianEmpire.html" },
+      { flags: "a.", date: "286 AD", event: "Diocletian’s division with Maximian (East/West administration begins)", area: "Roman Empire", url: "events/splitOfRomanEmpire.html" },
 
-  { flags: "", date: "1922 AD", event: "USSR formed", area: "Russia and other Soviet Republics", url: "events/ussr.html" },
+      { flags: "", date: "322–321 BC", event: "Mauryan Empire founded", area: "Indian Subcontinent [India/Pakistan]", url: "events/mauryanEmpire.html" },
 
-  { flags: "a.", date: "286 AD", event: "Diocletian’s division with Maximian (East/West administration begins)", area: "Roman Empire", url: "events/splitOfRomanEmpire.html" },
+      { flags: "a.", date: "c. 2334 BC", event: "Akkadian Empire founded", area: "Mesopotamia [Iraq]", url: "events/akkadianEmpire.html" },
 
-  { flags: "", date: "322–321 BC", event: "Mauryan Empire founded", area: "Indian Subcontinent [India/Pakistan]", url: "events/mauryanEmpire.html" },
+      { flags: "", date: "618 AD", event: "Tang Dynasty established", area: "China", url: "events/tangDynasty.html" },
 
-  { flags: "a.", date: "c. 2334 BC", event: "Akkadian Empire founded", area: "Mesopotamia [Iraq]", url: "events/akkadianEmpire.html" },
+      { flags: "", date: "960 AD", event: "Song Dynasty established", area: "China", url: "events/songDynasty.html" },
 
-  { flags: "", date: "618 AD", event: "Tang Dynasty established", area: "China", url: "events/tangDynasty.html" },
+      { flags: "", date: "1947–1991 AD", event: "Cold War", area: "Global", url: "events/coldWar.html" },
 
-  { flags: "", date: "960 AD", event: "Song Dynasty established", area: "China", url: "events/songDynasty.html" },
+      { flags: "", date: "1799–1815 AD", event: "Napoleon’s rule (Consulate/Empire)", area: "Europe", url: "events/napoleanBonaparte.html" },
 
-  { flags: "", date: "1947–1991 AD", event: "Cold War", area: "Global", url: "events/coldWar.html" },
+      { flags: "", date: "1096–1291 AD", event: "The Crusades (Latin East campaigns)", area: "Middle East and Europe", url: "events/crusades.html" },
 
-  { flags: "", date: "1799–1815 AD", event: "Napoleon’s rule (Consulate/Empire)", area: "Europe", url: "events/napoleanBonaparte.html" },
+      { flags: "", date: "636 AD", event: "Battle of Yarmouk", area: "Yarmouk River region [Syria/Jordan]", url: "events/battleOfYarmouk.html" },
 
-  { flags: "", date: "1096–1291 AD", event: "The Crusades (Latin East campaigns)", area: "Middle East and Europe", url: "events/crusades.html" },
+      { flags: "", date: "711 AD", event: "Battle of Guadalete", area: "Guadalete River, Iberian Peninsula [Spain]", url: "events/battleOfGuadalete.html" },
 
-  { flags: "", date: "636 AD", event: "Battle of Yarmouk", area: "Yarmouk River region [Syria/Jordan]", url: "events/battleOfYarmouk.html" },
+      { flags: "", date: "756 AD", event: "Emirate of Córdoba founded", area: "Al-Andalus [Spain/Portugal]", url: "events/cordobaEmirate.html" },
 
-  { flags: "", date: "711 AD", event: "Battle of Guadalete", area: "Guadalete River, Iberian Peninsula [Spain]", url: "events/battleOfGuadalete.html" },
+      { flags: "", date: "1238 AD", event: "Emirate of Granada founded", area: "Al-Andalus [Spain]", url: "events/granadaCaliphate.html" },
 
-  { flags: "", date: "756 AD", event: "Emirate of Córdoba founded", area: "Al-Andalus [Spain/Portugal]", url: "events/cordobaEmirate.html" },
+      { flags: "", date: "330 AD", event: "Constantinople founded (later called Byzantine Empire by historians)", area: "Eastern Mediterranean, Constantinople [Istanbul, Türkiye]", url: "events/byzantineEmpire.html" },
 
-  { flags: "", date: "1238 AD", event: "Emirate of Granada founded", area: "Al-Andalus [Spain]", url: "events/granadaCaliphate.html" },
+      { flags: "", date: "509 BC", event: "Roman Republic established", area: "Ancient Rome [Italy]", url: "events/romans.html" },
 
-  { flags: "", date: "330 AD", event: "Constantinople founded (later called Byzantine Empire by historians)", area: "Eastern Mediterranean, Constantinople [Istanbul, Türkiye]", url: "events/byzantineEmpire.html" },
+      { flags: "", date: "44 BC", event: "Assassination of Julius Caesar", area: "Rome [Italy]", url: "events/julisCaesar.html" },
 
-  { flags: "", date: "509 BC", event: "Roman Republic established", area: "Ancient Rome [Italy]", url: "events/romans.html" },
+      { flags: "", date: "27 BC", event: "Augustus establishes the Roman Empire", area: "Ancient Rome [Italy]", url: "events/augustus.html" },
 
-  { flags: "", date: "44 BC", event: "Assassination of Julius Caesar", area: "Rome [Italy]", url: "events/julisCaesar.html" },
+      { flags: "", date: "51–30 BC", event: "Cleopatra VII’s reign & relations with Rome", area: "Egypt; Roman Republic/Empire [Egypt/Italy]", url: "events/cleopatra.html" },
 
-  { flags: "", date: "27 BC", event: "Augustus establishes the Roman Empire", area: "Ancient Rome [Italy]", url: "events/augustus.html" },
+      { flags: "", date: "305–30 BC", event: "Ptolemaic Dynasty in Egypt", area: "Egypt", url: "events/ptolemaicDynasty.html" },
 
-  { flags: "", date: "51–30 BC", event: "Cleopatra VII’s reign & relations with Rome", area: "Egypt; Roman Republic/Empire [Egypt/Italy]", url: "events/cleopatra.html" },
+      { flags: "", date: "1526 AD", event: "Mughal Empire founded", area: "Indian Subcontinent [India/Pakistan]", url: "events/mughals.html" },
 
-  { flags: "", date: "305–30 BC", event: "Ptolemaic Dynasty in Egypt", area: "Egypt", url: "events/ptolemaicDynasty.html" },
+      { flags: "", date: "c. 320–550 AD", event: "Gupta Empire", area: "Indian Subcontinent [India/Bangladesh]", url: "events/guptaEmpire.html" },
 
-  { flags: "", date: "1526 AD", event: "Mughal Empire founded", area: "Indian Subcontinent [India/Pakistan]", url: "events/mughals.html" },
+      { flags: "", date: "1955–1975 AD", event: "Vietnam War", area: "Vietnam and Southeast Asia", url: "events/vietnamWars.html" },
 
-  { flags: "", date: "c. 320–550 AD", event: "Gupta Empire", area: "Indian Subcontinent [India/Bangladesh]", url: "events/guptaEmpire.html" },
+      { flags: "", date: "1945 AD", event: "Atomic bombing of Hiroshima", area: "Hiroshima [Japan]", url: "events/atomicBombing.html" },
 
-  { flags: "", date: "1955–1975 AD", event: "Vietnam War", area: "Vietnam and Southeast Asia", url: "events/vietnamWars.html" },
+      { flags: "", date: "1945 AD", event: "Atomic bombing of Nagasaki", area: "Nagasaki [Japan]", url: "events/atomicBombing.html" },
 
-  { flags: "", date: "1945 AD", event: "Atomic bombing of Hiroshima", area: "Hiroshima [Japan]", url: "events/atomicBombing.html" },
+      { flags: "", date: "1941 AD", event: "Pearl Harbor attack", area: "Pearl Harbor, Hawaii [USA]", url: "events/pearlHaborBombing.html" }, // (typo in file name retained if intentional)
 
-  { flags: "", date: "1945 AD", event: "Atomic bombing of Nagasaki", area: "Nagasaki [Japan]", url: "events/atomicBombing.html" },
+      { flags: "", date: "1947 AD", event: "India’s independence", area: "Indian Subcontinent [India/Pakistan]", url: "events/indianIndependence.html" },
 
-  { flags: "", date: "1941 AD", event: "Pearl Harbor attack", area: "Pearl Harbor, Hawaii [USA]", url: "events/pearlHaborBombing.html" }, // (typo in file name retained if intentional)
+      { flags: "", date: "1945 AD", event: "Capture of Berlin by Allied forces", area: "Berlin [Germany]", url: "events/captureOfBerlin.html" },
 
-  { flags: "", date: "1947 AD", event: "India’s independence", area: "Indian Subcontinent [India/Pakistan]", url: "events/indianIndependence.html" },
+      { flags: "", date: "1886 AD", event: "Statue of Liberty dedicated", area: "New York [USA]", url: "events/statueOfLiberty.html" },
 
-  { flags: "", date: "1945 AD", event: "Capture of Berlin by Allied forces", area: "Berlin [Germany]", url: "events/captureOfBerlin.html" },
+      { flags: "", date: "1889 AD", event: "Eiffel Tower completed", area: "Paris [France]", url: "events/eiffelTower.html" },
 
-  { flags: "", date: "1886 AD", event: "Statue of Liberty dedicated", area: "New York [USA]", url: "events/statueOfLiberty.html" },
+      { flags: "", date: "1632–1648 AD", event: "Taj Mahal constructed", area: "Agra [India]", url: "events/tajMahal.html" },
 
-  { flags: "", date: "1889 AD", event: "Eiffel Tower completed", area: "Paris [France]", url: "events/eiffelTower.html" },
+      { flags: "", date: "1922–1931 AD", event: "Christ the Redeemer constructed", area: "Rio de Janeiro [Brazil]", url: "events/christTheRedeemer.html" },
 
-  { flags: "", date: "1632–1648 AD", event: "Taj Mahal constructed", area: "Agra [India]", url: "events/tajMahal.html" },
+      { flags: "", date: "72–80 AD", event: "Colosseum constructed", area: "Rome [Italy]", url: "events/colosseum.html" },
 
-  { flags: "", date: "1922–1931 AD", event: "Christ the Redeemer constructed", area: "Rio de Janeiro [Brazil]", url: "events/christTheRedeemer.html" },
+      { flags: "", date: "1757 AD", event: "Battle of Plassey (British ascendancy in India)", area: "Indian Subcontinent [India]", url: "events/britishInvasionOfIndia.html" },
 
-  { flags: "", date: "72–80 AD", event: "Colosseum constructed", area: "Rome [Italy]", url: "events/colosseum.html" },
+      { flags: "a.", date: "c. 3500–2000 BC", event: "Sumerian civilization flourishes", area: "Mesopotamia [Iraq]", url: "events/sumerian.html" },
 
-  { flags: "", date: "1757 AD", event: "Battle of Plassey (British ascendancy in India)", area: "Indian Subcontinent [India]", url: "events/britishInvasionOfIndia.html" },
+      { flags: "", date: "1279–1213 BC", event: "Reign of Ramesses II", area: "Ancient Egypt [Egypt]", url: "events/pharaohRamesses.html" },
 
-  { flags: "a.", date: "c. 3500–2000 BC", event: "Sumerian civilization flourishes", area: "Mesopotamia [Iraq]", url: "events/sumerian.html" },
+      { flags: "", date: "1171 AD", event: "Ayyubid Dynasty founded by Ṣalāḥ ad-Dīn", area: "Middle East and North Africa [Egypt/Syria]", url: "events/ayyubids.html" },
 
-  { flags: "", date: "1279–1213 BC", event: "Reign of Ramesses II", area: "Ancient Egypt [Egypt]", url: "events/pharaohRamesses.html" },
+      { flags: "", date: "1260 AD", event: "Battle of ʿAyn Jālūt", area: "Near ʿAyn Jālūt [Palestine]", url: "events/battleOfAinJalut.html" },
 
-  { flags: "", date: "1171 AD", event: "Ayyubid Dynasty founded by Ṣalāḥ ad-Dīn", area: "Middle East and North Africa [Egypt/Syria]", url: "events/ayyubids.html" },
+      { flags: "", date: "53 BC", event: "Battle of Carrhae", area: "Carrhae [Harran, Türkiye]", url: "events/battleOfCarrhae.html" },
 
-  { flags: "", date: "1260 AD", event: "Battle of ʿAyn Jālūt", area: "Near ʿAyn Jālūt [Palestine]", url: "events/battleOfAinJalut.html" },
+      { flags: "", date: "58–50 BC", event: "Gallic Wars", area: "Gaul [France/Belgium]", url: "events/gallicWars.html" },
 
-  { flags: "", date: "53 BC", event: "Battle of Carrhae", area: "Carrhae [Harran, Türkiye]", url: "events/battleOfCarrhae.html" },
+      // Fix: Chains ≠ Hunayn; keep Chains separately above; change this entry to Hunayn or delete.
+      { flags: "", date: "630 AD", event: "Battle of Hunayn", area: "Hunayn, Arabian Peninsula [Saudi Arabia]", url: "events/battleOfHunayn.html" },
 
-  { flags: "", date: "58–50 BC", event: "Gallic Wars", area: "Gaul [France/Belgium]", url: "events/gallicWars.html" },
+      { flags: "", date: "632–633 AD", event: "Ridda Wars", area: "Arabian Peninsula [Saudi Arabia]", url: "events/riddaWars.html" },
 
-  // Fix: Chains ≠ Hunayn; keep Chains separately above; change this entry to Hunayn or delete.
-  { flags: "", date: "630 AD", event: "Battle of Hunayn", area: "Hunayn, Arabian Peninsula [Saudi Arabia]", url: "events/battleOfHunayn.html" },
+      { flags: "", date: "1453 AD", event: "Siege of Constantinople", area: "Constantinople [Istanbul, Türkiye]", url: "events/siegeOfConstantinople.html" },
 
-  { flags: "", date: "632–633 AD", event: "Ridda Wars", area: "Arabian Peninsula [Saudi Arabia]", url: "events/riddaWars.html" },
+      { flags: "", date: "1687 AD", event: "Siege of Golconda", area: "Golconda (Hyderabad) [India]", url: "events/siegeOfGolconda.html" },
 
-  { flags: "", date: "1453 AD", event: "Siege of Constantinople", area: "Constantinople [Istanbul, Türkiye]", url: "events/siegeOfConstantinople.html" },
+      { flags: "", date: "632 AD", event: "Death of Prophet Muhammad", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/seerah.html" }, // fixed empty URL
 
-  { flags: "", date: "1687 AD", event: "Siege of Golconda", area: "Golconda (Hyderabad) [India]", url: "events/siegeOfGolconda.html" },
+      { flags: "", date: "632 AD", event: "Abu Bakr becomes first Caliph", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/abuBakr.html" },
 
-  { flags: "", date: "632 AD", event: "Death of Prophet Muhammad", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/seerah.html" }, // fixed empty URL
+      { flags: "", date: "634 AD", event: "ʿUmar ibn al-Khaṭṭāb becomes Caliph", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/umarIbnKhattab.html" },
 
-  { flags: "", date: "632 AD", event: "Abu Bakr becomes first Caliph", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/abuBakr.html" },
+      { flags: "", date: "644 AD", event: "ʿUthmān ibn ʿAffān becomes Caliph", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/uthmanIbnAffan.html" },
 
-  { flags: "", date: "634 AD", event: "ʿUmar ibn al-Khaṭṭāb becomes Caliph", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/umarIbnKhattab.html" },
+      { flags: "", date: "656 AD", event: "ʿAlī ibn Abī Ṭālib becomes Caliph", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/aliIbnTalib.html" },
 
-  { flags: "", date: "644 AD", event: "ʿUthmān ibn ʿAffān becomes Caliph", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/uthmanIbnAffan.html" },
+      { flags: "", date: "750 AD", event: "Abbasid Caliphate established", area: "Baghdad [Iraq]", url: "events/abbasidCaliphate.html" },
 
-  { flags: "", date: "656 AD", event: "ʿAlī ibn Abī Ṭālib becomes Caliph", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/aliIbnTalib.html" },
+      { flags: "", date: "661 AD", event: "Umayyad Caliphate begins", area: "Damascus [Syria]", url: "events/umayyadCaliphate.html" },
 
-  { flags: "", date: "750 AD", event: "Abbasid Caliphate established", area: "Baghdad [Iraq]", url: "events/abbasidCaliphate.html" },
+      { flags: "", date: "909 AD", event: "Fatimid Caliphate founded", area: "Ifriqiya [Tunisia/Algeria]", url: "events/fatimids.html" },
 
-  { flags: "", date: "661 AD", event: "Umayyad Caliphate begins", area: "Damascus [Syria]", url: "events/umayyadCaliphate.html" },
+      { flags: "", date: "793 AD", event: "Viking raid on Lindisfarne", area: "Lindisfarne [England]", url: "events/vikings.html" },
 
-  { flags: "", date: "909 AD", event: "Fatimid Caliphate founded", area: "Ifriqiya [Tunisia/Algeria]", url: "events/fatimids.html" },
+      { flags: "", date: "865 AD", event: "Great Heathen Army invades England", area: "Various regions [England]", url: "events/vikings.html" },
 
-  { flags: "", date: "793 AD", event: "Viking raid on Lindisfarne", area: "Lindisfarne [England]", url: "events/vikings.html" },
+      { flags: "", date: "1066 AD", event: "Norman Conquest (Battle of Hastings)", area: "Hastings [England]", url: "events/battleOfHastings.html" },
 
-  { flags: "", date: "865 AD", event: "Great Heathen Army invades England", area: "Various regions [England]", url: "events/vikings.html" },
+      { flags: "a.", date: "c. 882 AD", event: "Kievan Rus' consolidated under Oleg", area: "Kiev [Ukraine]", url: "events/kievanRus.html" },
 
-  { flags: "", date: "1066 AD", event: "Norman Conquest (Battle of Hastings)", area: "Hastings [England]", url: "events/battleOfHastings.html" },
+      { flags: "", date: "927 AD", event: "Unification of England (Athelstan)", area: "Various regions [England]", url: "events/unificationOfEngland.html" },
 
-  { flags: "a.", date: "c. 882 AD", event: "Kievan Rus' consolidated under Oleg", area: "Kiev [Ukraine]", url: "events/kievanRus.html" },
+      { flags: "t.", date: "570 AD", event: "Year of the Elephant", area: "Mecca, Arabian Peninsula [Saudi Arabia]", url: "events/amAlFeel.html" },
 
-  { flags: "", date: "927 AD", event: "Unification of England (Athelstan)", area: "Various regions [England]", url: "events/unificationOfEngland.html" },
+      { flags: "a.", date: "1162–1227 AD", event: "Life of Genghis Khan", area: "Mongolian steppes and beyond [Mongolia/China]", url: "events/chinggisKhan.html" },
 
-  { flags: "t.", date: "570 AD", event: "Year of the Elephant", area: "Mecca, Arabian Peninsula [Saudi Arabia]", url: "events/amAlFeel.html" },
+      { flags: "", date: "1206 AD", event: "Mongol Empire established", area: "Central Asia and beyond", url: "events/mongols.html" },
 
-  { flags: "a.", date: "1162–1227 AD", event: "Life of Genghis Khan", area: "Mongolian steppes and beyond [Mongolia/China]", url: "events/chinggisKhan.html" },
+      { flags: "a.", date: "c. 1260s AD", event: "Division of Mongol Empire into khanates", area: "Eurasia", url: "events/divisionOfMongolianEmpire.html" },
 
-  { flags: "", date: "1206 AD", event: "Mongol Empire established", area: "Central Asia and beyond", url: "events/mongols.html" },
+      { flags: "a.", date: "c. 11th–12th c. AD", event: "Seljuk Empire at its height", area: "Central Asia, Anatolia, Persia [Iran/Türkiye]", url: "events/seljukEmpire.html" },
 
-  { flags: "a.", date: "c. 1260s AD", event: "Division of Mongol Empire into khanates", area: "Eurasia", url: "events/divisionOfMongolianEmpire.html" },
+      { flags: "", date: "1299 AD", event: "Rise of the Ottomans", area: "Anatolia [Türkiye]", url: "events/ottomans.html" },
 
-  { flags: "a.", date: "c. 11th–12th c. AD", event: "Seljuk Empire at its height", area: "Central Asia, Anatolia, Persia [Iran/Türkiye]", url: "events/seljukEmpire.html" },
+      { flags: "", date: "1724–1948 AD", event: "Rule of the Nizams of Hyderabad", area: "Deccan [India]", url: "events/nizams.html" },
 
-  { flags: "", date: "1299 AD", event: "Rise of the Ottomans", area: "Anatolia [Türkiye]", url: "events/ottomans.html" },
+      { flags: "", date: "1600 AD", event: "East India Company chartered (dominance later)", area: "Indian Ocean/India [India]", url: "events/eastIndiaCompany.html" },
 
-  { flags: "", date: "1724–1948 AD", event: "Rule of the Nizams of Hyderabad", area: "Deccan [India]", url: "events/nizams.html" },
+      { flags: "", date: "1428–1521 AD", event: "Aztec Empire", area: "Central Mexico [Mexico]", url: "events/aztecs.html" },
 
-  { flags: "", date: "1600 AD", event: "East India Company chartered (dominance later)", area: "Indian Ocean/India [India]", url: "events/eastIndiaCompany.html" },
+      { flags: "a.", date: "c. 2000 BC", event: "Maya culture develops (civilization later flourishes)", area: "Yucatán and beyond [Mexico/Guatemala/Belize]", url: "events/mayanCiv.html" },
 
-  { flags: "", date: "1428–1521 AD", event: "Aztec Empire", area: "Central Mexico [Mexico]", url: "events/aztecs.html" },
+      { flags: "", date: "1438–1533 AD", event: "Inca Empire", area: "Andes region [Peru/Bolivia/Ecuador]", url: "events/inca.html" },
 
-  { flags: "a.", date: "c. 2000 BC", event: "Maya culture develops (civilization later flourishes)", area: "Yucatán and beyond [Mexico/Guatemala/Belize]", url: "events/mayanCiv.html" },
+      { flags: "a.", date: "c. 2686–2181 BC", event: "Old Kingdom of Egypt", area: "Nile River Valley [Egypt]", url: "events/oldKingdomEgypt.html" },
 
-  { flags: "", date: "1438–1533 AD", event: "Inca Empire", area: "Andes region [Peru/Bolivia/Ecuador]", url: "events/inca.html" },
+      { flags: "a.", date: "c. 2600–1900 BC", event: "Indus Valley Civilization (Mature Harappan)", area: "Indus River Valley [Pakistan/India]", url: "events/indusValley.html" },
 
-  { flags: "a.", date: "c. 2686–2181 BC", event: "Old Kingdom of Egypt", area: "Nile River Valley [Egypt]", url: "events/oldKingdomEgypt.html" },
+      { flags: "a.", date: "c. 700 BC", event: "Celtic cultures in Europe (spread)", area: "Various regions [Europe]", url: "events/celticCiv.html" },
 
-  { flags: "a.", date: "c. 2600–1900 BC", event: "Indus Valley Civilization (Mature Harappan)", area: "Indus River Valley [Pakistan/India]", url: "events/indusValley.html" },
+      { flags: "", date: "1692 AD", event: "Salem witch trials", area: "Salem, Massachusetts [USA]", url: "events/salemWitchTrials.html" },
 
-  { flags: "a.", date: "c. 700 BC", event: "Celtic cultures in Europe (spread)", area: "Various regions [Europe]", url: "events/celticCiv.html" },
+      { flags: "", date: "1991 AD", event: "Dissolution of the Soviet Union", area: "Eurasia", url: "events/ussrDissolution.html" },
 
-  { flags: "", date: "1692 AD", event: "Salem witch trials", area: "Salem, Massachusetts [USA]", url: "events/salemWitchTrials.html" },
+      { flags: "", date: "627 AD", event: "Battle of the Trench (Confederates)", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/battleOfConfederates.html" },
 
-  { flags: "", date: "1991 AD", event: "Dissolution of the Soviet Union", area: "Eurasia", url: "events/ussrDissolution.html" },
+      { flags: "", date: "570 AD", event: "Birth of Prophet Muhammad", area: "Mecca, Arabian Peninsula [Saudi Arabia]", url: "events/seerah.html" },
 
-  { flags: "", date: "627 AD", event: "Battle of the Trench (Confederates)", area: "Medina, Arabian Peninsula [Saudi Arabia]", url: "events/battleOfConfederates.html" },
+      { flags: "", date: "610 AD", event: "Beginning of Qur'anic revelation", area: "Hira Cave, Arabian Peninsula [Saudi Arabia]", url: "events/quranicRevelation.html" },
 
-  { flags: "", date: "570 AD", event: "Birth of Prophet Muhammad", area: "Mecca, Arabian Peninsula [Saudi Arabia]", url: "events/seerah.html" },
+      { flags: "", date: "624 AD", event: "Battle of Badr", area: "Valley of Badr, Arabian Peninsula [Saudi Arabia]", url: "events/battleOfBadr.html" },
 
-  { flags: "", date: "610 AD", event: "Beginning of Qur'anic revelation", area: "Hira Cave, Arabian Peninsula [Saudi Arabia]", url: "events/quranicRevelation.html" },
+      { flags: "", date: "625 AD", event: "Battle of Uhud", area: "Mount Uhud, Arabian Peninsula [Saudi Arabia]", url: "events/battleOfUhud.html" },
 
-  { flags: "", date: "624 AD", event: "Battle of Badr", area: "Valley of Badr, Arabian Peninsula [Saudi Arabia]", url: "events/battleOfBadr.html" },
+      { flags: "", date: "431–404 BC", event: "Peloponnesian War", area: "Ancient Greece [Greece]", url: "events/peloponnesianWar.html" },
 
-  { flags: "", date: "625 AD", event: "Battle of Uhud", area: "Mount Uhud, Arabian Peninsula [Saudi Arabia]", url: "events/battleOfUhud.html" },
+      { flags: "", date: "480 BC", event: "Battle of Thermopylae", area: "Thermopylae Pass [Greece]", url: "events/battleOfThermopylae.html" },
 
-  { flags: "", date: "431–404 BC", event: "Peloponnesian War", area: "Ancient Greece [Greece]", url: "events/peloponnesianWar.html" },
+      { flags: "a.", date: "4 BC/ 1 AD", event: "Birth of Jesus (traditional range)", area: "Bethlehem, Judea [Palestine]", url: "events/birthOfJesus.html" },
 
-  { flags: "", date: "480 BC", event: "Battle of Thermopylae", area: "Thermopylae Pass [Greece]", url: "events/battleOfThermopylae.html" },
+      { flags: "a.", date: "c. 600–530 BC", event: "Life of Cyrus the Great", area: "Persian Empire [Iran]", url: "events/cyrusGreat.html" },
 
-  { flags: "a.", date: "4 BC/ 1 AD", event: "Birth of Jesus (traditional range)", area: "Bethlehem, Judea [Palestine]", url: "events/birthOfJesus.html" },
+      { flags: "", date: "1479–1425 BC", event: "Reign of Thutmose III", area: "Ancient Egypt [Egypt]", url: "events/thutmoseThird.html" },
 
-  { flags: "a.", date: "c. 600–530 BC", event: "Life of Cyrus the Great", area: "Persian Empire [Iran]", url: "events/cyrusGreat.html" },
+      { flags: "", date: "334 BC", event: "Alexander the Great invades Persia", area: "Achaemenid Empire [Iran/Iraq/Türkiye]", url: "events/alexander.html" },
 
-  { flags: "", date: "1479–1425 BC", event: "Reign of Thutmose III", area: "Ancient Egypt [Egypt]", url: "events/thutmoseThird.html" },
+      { flags: "", date: "331 BC", event: "Battle of Gaugamela", area: "Near Arbela [Iraq]", url: "events/battleOfGaugamela.html" },
 
-  { flags: "", date: "334 BC", event: "Alexander the Great invades Persia", area: "Achaemenid Empire [Iran/Iraq/Türkiye]", url: "events/alexander.html" },
+      { flags: "", date: "331 BC", event: "Alexandria founded", area: "Alexandria [Egypt]", url: "events/alexandria.html" },
 
-  { flags: "", date: "331 BC", event: "Battle of Gaugamela", area: "Near Arbela [Iraq]", url: "events/battleOfGaugamela.html" },
+      { flags: "a.", date: "c. 3100 BC", event: "Development of Egyptian hieroglyphs", area: "Ancient Egypt [Egypt]", url: "events/egyptianHieroglyphs.html" },
 
-  { flags: "", date: "331 BC", event: "Alexandria founded", area: "Alexandria [Egypt]", url: "events/alexandria.html" },
+      { flags: "a.", date: "c. 2580–2560 BC", event: "Great Pyramid of Giza constructed", area: "Giza [Egypt]", url: "events/egyptianHieroglyphs.html" },
 
-  { flags: "a.", date: "c. 3100 BC", event: "Development of Egyptian hieroglyphs", area: "Ancient Egypt [Egypt]", url: "events/egyptianHieroglyphs.html" },
+      { flags: "", date: "c. 1754 BC", event: "Code of Hammurabi", area: "Babylon, Mesopotamia [Iraq]", url: "events/codeOfHammurabi.html" },
 
-  { flags: "a.", date: "c. 2580–2560 BC", event: "Great Pyramid of Giza constructed", area: "Giza [Egypt]", url: "events/egyptianHieroglyphs.html" },
+      { flags: "l.t.", date: "c. 1200 BC", event: "Trojan War", area: "Troy, Anatolia [Hisarlik, Türkiye]", url: "events/trojanWar.html" },
 
-  { flags: "", date: "c. 1754 BC", event: "Code of Hammurabi", area: "Babylon, Mesopotamia [Iraq]", url: "events/codeOfHammurabi.html" },
+      { flags: "", date: "447–432 BC", event: "Parthenon constructed", area: "Athens [Greece]", url: "events/parthenon.html" },
 
-  { flags: "l.t.", date: "c. 1200 BC", event: "Trojan War", area: "Troy, Anatolia [Hisarlik, Türkiye]", url: "events/trojanWar.html" },
+      { flags: "", date: "221 BC", event: "Unification of China under Qin", area: "China", url: "events/qinDynasty.html" },
 
-  { flags: "", date: "447–432 BC", event: "Parthenon constructed", area: "Athens [Greece]", url: "events/parthenon.html" },
+      { flags: "", date: "30 BC", event: "Egypt becomes a Roman province", area: "Egypt", url: "events/egyptRomanProvince.html" },
 
-  { flags: "", date: "221 BC", event: "Unification of China under Qin", area: "China", url: "events/qinDynasty.html" },
+      { flags: "", date: "70 AD", event: "Destruction of the Second Temple", area: "Jerusalem [Palestine]", url: "events/secondTempleofJerusalem.html" },
 
-  { flags: "", date: "30 BC", event: "Egypt becomes a Roman province", area: "Egypt", url: "events/egyptRomanProvince.html" },
+      { flags: "", date: "313 AD", event: "Edict of Milan grants religious toleration", area: "Milan [Italy]", url: "events/edictOfMilan.html" },
 
-  { flags: "", date: "70 AD", event: "Destruction of the Second Temple", area: "Jerusalem [Palestine]", url: "events/secondTempleofJerusalem.html" },
+      { flags: "", date: "476 AD", event: "Fall of the Western Roman Empire", area: "Rome [Italy]", url: "events/fallOfRome.html" },
 
-  { flags: "", date: "313 AD", event: "Edict of Milan grants religious toleration", area: "Milan [Italy]", url: "events/edictOfMilan.html" },
+      { flags: "", date: "622 AD", event: "Hijra (Mecca → Medina)", area: "Arabian Peninsula [Saudi Arabia]", url: "events/hijra.html" },
 
-  { flags: "", date: "476 AD", event: "Fall of the Western Roman Empire", area: "Rome [Italy]", url: "events/fallOfRome.html" },
+      { flags: "", date: "793–1066 AD", event: "Viking Age in Europe", area: "Northern Europe", url: "events/vikings.html" },
 
-  { flags: "", date: "622 AD", event: "Hijra (Mecca → Medina)", area: "Arabian Peninsula [Saudi Arabia]", url: "events/hijra.html" },
+      { flags: "", date: "1215 AD", event: "Magna Carta sealed", area: "Runnymede [England]", url: "events/magnaCarta.html" },
 
-  { flags: "", date: "793–1066 AD", event: "Viking Age in Europe", area: "Northern Europe", url: "events/vikings.html" },
+      { flags: "", date: "1347–1351 AD", event: "Black Death in Europe", area: "Europe", url: "events/blackDeath.html" },
 
-  { flags: "", date: "1215 AD", event: "Magna Carta sealed", area: "Runnymede [England]", url: "events/magnaCarta.html" },
+      { flags: "", date: "1492 AD", event: "Columbus reaches the Americas", area: "Caribbean Islands", url: "events/christopherColumbus.html" },
 
-  { flags: "", date: "1347–1351 AD", event: "Black Death in Europe", area: "Europe", url: "events/blackDeath.html" },
+      { flags: "", date: "1776 AD", event: "US Declaration of Independence", area: "Philadelphia, Pennsylvania [USA]", url: "events/independenceUSA.html" },
 
-  { flags: "", date: "1492 AD", event: "Columbus reaches the Americas", area: "Caribbean Islands", url: "events/christopherColumbus.html" },
+      { flags: "", date: "1789 AD", event: "French Revolution begins", area: "Paris [France]", url: "events/frenchRevolution.html" },
 
-  { flags: "", date: "1776 AD", event: "US Declaration of Independence", area: "Philadelphia, Pennsylvania [USA]", url: "events/independenceUSA.html" },
+      { flags: "", date: "1914 AD", event: "Outbreak of World War I", area: "Worldwide", url: "events/wwOne.html" },
 
-  { flags: "", date: "1789 AD", event: "French Revolution begins", area: "Paris [France]", url: "events/frenchRevolution.html" },
+      { flags: "", date: "1939 AD", event: "Outbreak of World War II", area: "Worldwide", url: "events/wwTwo.html" },
 
-  { flags: "", date: "1914 AD", event: "Outbreak of World War I", area: "Worldwide", url: "events/wwOne.html" },
+      { flags: "", date: "1293 AD", event: "Majapahit Empire founded", area: "Eastern Java [Indonesia]", url: "events/majapahitEmpire.html" },
 
-  { flags: "", date: "1939 AD", event: "Outbreak of World War II", area: "Worldwide", url: "events/wwTwo.html" },
+      { flags: "a.", date: "2019 AD", event: "COVID-19 outbreak detected", area: "Wuhan [China]", url: "events/covid19.html" },
 
-  { flags: "", date: "1293 AD", event: "Majapahit Empire founded", area: "Eastern Java [Indonesia]", url: "events/majapahitEmpire.html" },
+      { flags: "", date: "1192 AD", event: "Kamakura shogunate established", area: "Japan", url: "events/shogunate.html" },
 
-  { flags: "a.", date: "2019 AD", event: "COVID-19 outbreak detected", area: "Wuhan [China]", url: "events/covid19.html" },
+      { flags: "", date: "1603 AD", event: "Tokugawa shogunate unifies Japan", area: "Japan", url: "events/japaneseUnification.html" },
 
-  { flags: "", date: "1192 AD", event: "Kamakura shogunate established", area: "Japan", url: "events/shogunate.html" },
+      { flags: "", date: "633 AD", event: "Battle of Chains", area: "Near Al-Ubulla [Iraq]", url: "events/battleOfChains.html" },
 
-  { flags: "", date: "1603 AD", event: "Tokugawa shogunate unifies Japan", area: "Japan", url: "events/japaneseUnification.html" },
 
-  { flags: "", date: "633 AD", event: "Battle of Chains", area: "Near Al-Ubulla [Iraq]", url: "events/battleOfChains.html" },
+    ];
 
+    // ================= SORTING =================
 
-];
-
-
-  // ============== SORTING (lower bound) & RENDERING =================
-
-function sortEvents(list) {
-  return list.slice().sort((a, b) => normalizeDate(a) - normalizeDate(b));
-}
-
-/**
- * normalizeDate(event):
- * - Sorts by the LOWER bound of ev.date.
- * - Supports examples:
- *   "c. 2600 BC", "2600–2400 BC", "4 BC/ 1 AD", "1799–1815 AD",
- *   "11th c. AD", "11th–12th c. AD", "early 3rd c. BC"
- * - BC years are negative so they sort correctly.
- */
-function normalizeDate(ev) {
-  let s = (ev.date || "").trim();
-
-  // 1) Strip optional leading flag tokens if they slipped into date (e.g., "a. l.t. c. 1200 BC")
-  s = s.replace(/^(?:[a-z]\.\s*)+/i, "").trim(); // removes sequences like "a. ", "l. ", "t. "
-
-  // 2) Normalize dash types, drop leading circa marker "c. "
-  s = s.replace(/[\u2013\u2014]/g, "-").replace(/^\s*c\.\s*/i, "").trim();
-
-  // 3) If there's a slash like "4 BC/ 1 AD", use the LEFT side (lower bound)
-  if (s.includes("/")) {
-    const parts = s.split("/").map(p => p.trim());
-    s = parts[0] || parts[parts.length - 1];
-  }
-
-  // 4) Era detection (may be appended anywhere)
-  const hasBC = /(^|\s)BC\b/i.test(s);
-  const hasAD = /(^|\s)AD\b/i.test(s);
-  const era = hasBC ? "BC" : (hasAD ? "AD" : null);
-
-  // 5) Century handling
-  //    - "11th c. AD" -> 1000
-  //    - "11th–12th c. AD" -> start of first century (1000)
-  //    - "early 3rd c. BC" -> start of 3rd c. BC (300 BC)
-  //    We only care about the LOWER bound, so ranges pick the first century.
-  const centuryRangeMatch = s.match(/(\d+)(st|nd|rd|th)\s*-\s*(\d+)(st|nd|rd|th)\s*c/i);
-  if (centuryRangeMatch) {
-    const c1 = parseInt(centuryRangeMatch[1], 10);
-    const start = centuryStartYear(c1, era);
-    return start;
-  }
-  const centurySingleMatch = s.match(/(?:early|mid|late)?\s*(\d+)(st|nd|rd|th)\s*c/i);
-  if (centurySingleMatch) {
-    const qual = (s.match(/\b(early|mid|late)\b/i) || [])[1]?.toLowerCase() || "";
-    const c = parseInt(centurySingleMatch[1], 10);
-    let start = centuryStartYear(c, era);
-    // For lower-bound sorting, "early" maps to start; we ignore mid/late for simplicity.
-    // (If you ever want mid/late offsets, we can add +50/-50 logic later.)
-    return start;
-  }
-
-  // 6) Remove explicit "BC"/"AD" tokens from the string for numeric parsing
-  let core = s.replace(/\b(BC|AD)\b/ig, "").trim();
-
-  // 7) Numeric range "x - y"  -> use LEFT side (lower bound)
-  if (core.includes("-")) {
-    const left = core.split("-")[0].trim();
-    const yr = parseInt(left, 10);
-    if (!Number.isNaN(yr)) return hasBC ? -yr : yr;
-  }
-
-  // 8) Fallback: first number in the string
-  const m = core.match(/(\d{1,6})/);
-  let year = m ? parseInt(m[1], 10) : Number.MAX_SAFE_INTEGER;
-
-  return hasBC ? -year : year;
-}
-
-// Helper: start year of a century, lower bound
-// - For AD: 11th c. AD -> 1000
-// - For BC: 3rd c. BC  -> -300
-function centuryStartYear(century, era) {
-  if (era === "BC") {
-    // 1st c. BC = 100–1 BC -> lower bound = 100 BC -> -100
-    // 3rd c. BC = 300–201 BC -> lower bound = 300 BC -> -300
-    return -(century * 100);
-  }
-  // Default AD (or unknown): 1st c. AD = 1–100 -> lower bound ~ 1
-  // But for sorting by centuries we typically anchor to clean hundreds from 1-based centuries:
-  // 11th c. AD -> 1000, 3rd c. AD -> 200, etc.
-  return (century - 1) * 100;
-}
-
-  // show flags as prefix "l.t. " "a. " etc. colored
-  function renderDateCell(ev) {
-    const container = document.createElement("div");
-    container.className = "date-cell";
-
-    const prefix = (ev.flags || "").trim();
-    if (prefix) {
-      // flags are dot-separated in any order, e.g., "l.t.a"
-      const parts = prefix.split(".").filter(Boolean);
-      parts.forEach((p, idx) => {
-        const span = document.createElement("span");
-        span.className = `flag-token flag-${p.toLowerCase()}`;
-        span.textContent = p.toLowerCase() + ".";
-        container.appendChild(span);
-      });
-      // add a space after flags group
-      container.appendChild(document.createTextNode(" "));
+    function sortEvents(list) {
+      return list.slice().sort((a, b) => normalizeDate(a) - normalizeDate(b));
     }
 
-    const dateText = document.createElement("span");
-    dateText.textContent = ev.date;
-    container.appendChild(dateText);
-    return container;
-  }
+    function normalizeDate(ev) {
+      let s = (ev.date || "").trim();
 
-  // convert "(Modern)" to "[Modern]" — only for the last (...) group.
-  function formatArea(area) {
-    if (!area) return "";
-    // If already has square brackets, leave as-is
-    if (/\[.*\]/.test(area)) return area;
+      // strip optional flag tokens if they slipped into date
+      s = s.replace(/^(?:[a-z]\.\s*)+/i, "").trim();
 
-    // Replace the last (...) with [...]
-    const lastOpen = area.lastIndexOf("(");
-    const lastClose = area.lastIndexOf(")");
-    if (lastOpen !== -1 && lastClose !== -1 && lastClose > lastOpen) {
-      const before = area.slice(0, lastOpen);
-      const inside = area.slice(lastOpen + 1, lastClose);
-      const after = area.slice(lastClose + 1);
-      return `${before}[${inside}]${after}`;
+      // normalize dashes; drop leading "c. "
+      s = s.replace(/[\u2013\u2014]/g, "-").replace(/^\s*c\.\s*/i, "").trim();
+
+      // slash like "4 BC/ 1 AD" -> use left side
+      if (s.includes("/")) {
+        const parts = s.split("/").map(p => p.trim());
+        s = parts[0] || parts[parts.length - 1];
+      }
+
+      const hasBC = /(^|\s)BC\b/i.test(s);
+      const hasAD = /(^|\s)AD\b/i.test(s);
+      const era = hasBC ? "BC" : (hasAD ? "AD" : null);
+
+      // century ranges like "11th–12th c."
+      const centuryRangeMatch = s.match(/(\d+)(st|nd|rd|th)\s*-\s*(\d+)(st|nd|rd|th)\s*c/i);
+      if (centuryRangeMatch) {
+        const c1 = parseInt(centuryRangeMatch[1], 10);
+        return centuryStartYear(c1, era);
+      }
+
+      // single century like "early 3rd c."
+      const centurySingleMatch = s.match(/(?:early|mid|late)?\s*(\d+)(st|nd|rd|th)\s*c/i);
+      if (centurySingleMatch) {
+        const c = parseInt(centurySingleMatch[1], 10);
+        return centuryStartYear(c, era);
+      }
+
+      let core = s.replace(/\b(BC|AD)\b/ig, "").trim();
+
+      // numeric range "x - y" -> left side
+      if (core.includes("-")) {
+        const left = core.split("-")[0].trim();
+        const yr = parseInt(left, 10);
+        if (!Number.isNaN(yr)) return hasBC ? -yr : yr;
+      }
+
+      // fallback: first number
+      const m = core.match(/(\d{1,6})/);
+      const year = m ? parseInt(m[1], 10) : Number.MAX_SAFE_INTEGER;
+
+      return hasBC ? -year : year;
     }
-    return area;
-  }
 
-  function populateTable() {
-    const sorted = sortEvents(events);
-    const tbody = document.getElementById("eventTableBody");
-    tbody.innerHTML = "";
+    function centuryStartYear(century, era) {
+      if (era === "BC") return -(century * 100);
+      return (century - 1) * 100;
+    }
 
-    for (const ev of sorted) {
-      const tr = document.createElement("tr");
-      tr.className = "timeline-row";
-      tr.tabIndex = 0;
+    // ================= RENDERING =================
 
-      const dateCell = document.createElement("td");
-      dateCell.appendChild(renderDateCell(ev));
+    function renderDateCell(ev) {
+      const container = document.createElement("div");
+      container.className = "date-cell";
 
-      const eventCell = document.createElement("td");
-      eventCell.textContent = ev.event;
+      const prefix = (ev.flags || "").trim();
+      if (prefix) {
+        const parts = prefix.split(".").filter(Boolean);
+        parts.forEach((p) => {
+          const span = document.createElement("span");
+          span.className = `flag-token flag-${p.toLowerCase()}`;
+          span.textContent = p.toLowerCase() + ".";
+          container.appendChild(span);
+        });
+        container.appendChild(document.createTextNode(" "));
+      }
 
-      const areaCell = document.createElement("td");
-      areaCell.textContent = formatArea(ev.area);
+      const dateText = document.createElement("span");
+      dateText.textContent = ev.date;
+      container.appendChild(dateText);
 
-      tr.append(dateCell, eventCell, areaCell);
+      return container;
+    }
 
-      tr.addEventListener("click", () => {
-        if (ev.url && ev.url.trim() && ev.url.trim() !== "events/.html") {
-          window.location.href = ev.url;
+    function formatArea(area) {
+      if (!area) return "";
+      if (/\[.*\]/.test(area)) return area;
+
+      const lastOpen = area.lastIndexOf("(");
+      const lastClose = area.lastIndexOf(")");
+      if (lastOpen !== -1 && lastClose !== -1 && lastClose > lastOpen) {
+        const before = area.slice(0, lastOpen);
+        const inside = area.slice(lastOpen + 1, lastClose);
+        const after = area.slice(lastClose + 1);
+        return `${before}[${inside}]${after}`;
+      }
+      return area;
+    }
+
+    function populateTable(list) {
+      const sorted = sortEvents(list);
+      const tbody = document.getElementById("eventTableBody");
+      tbody.innerHTML = "";
+
+      for (const ev of sorted) {
+        const tr = document.createElement("tr");
+        tr.className = "timeline-row";
+        tr.tabIndex = 0;
+
+        const dateCell = document.createElement("td");
+        dateCell.appendChild(renderDateCell(ev));
+
+        const eventCell = document.createElement("td");
+        eventCell.textContent = ev.event;
+
+        const areaCell = document.createElement("td");
+        areaCell.textContent = formatArea(ev.area);
+
+        tr.append(dateCell, eventCell, areaCell);
+
+        const hasValidUrl = ev.url && ev.url.trim() && ev.url.trim() !== "events/.html";
+        if (hasValidUrl) {
+          tr.addEventListener("click", () => window.location.href = ev.url);
+          tr.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              window.location.href = ev.url;
+            }
+          });
+        } else {
+          tr.style.cursor = "default";
         }
-      });
 
-      tbody.appendChild(tr);
-    }
-  }
-
-  populateTable();
-</script>
-
-<script>
-  // theme toggle
-  function toggleTheme() {
-    const body = document.body;
-    body.classList.toggle("light");
-    body.classList.toggle("dark");
-
-  // ➜ NEW: table dark mode toggle
-  const table = document.getElementById("eventTable");
-  table.classList.toggle("table-dark");
-
-    const icon = document.getElementById("themeIcon");
-    if (body.classList.contains("dark")) {
-      icon.classList.remove("fa-sun");
-      icon.classList.add("fa-moon");
-      localStorage.setItem("themePreference", "dark");
-    } else {
-      icon.classList.remove("fa-moon");
-      icon.classList.add("fa-sun");
-      localStorage.setItem("themePreference", "light");
+        tbody.appendChild(tr);
+      }
     }
 
-    const headerSpan = document.getElementById("headerSpan");
-    headerSpan.classList.toggle("mh1-light");
-    headerSpan.classList.toggle("mh1-dark");
-  }
+    // ================= INIT (theme + search + footer year) =================
 
-  function loadThemePreference() {
-    const saved = localStorage.getItem("themePreference");
-    if (saved === "dark" && !document.body.classList.contains("dark")) {
-      toggleTheme();
-    }
-  }
+    document.addEventListener("DOMContentLoaded", () => {
+      // footer year
+      const y = new Date().getFullYear();
+      const cpr = document.getElementById("cprtxt");
+      if (cpr) cpr.textContent = y;
 
-  window.addEventListener("load", loadThemePreference);
-</script>
+      const body = document.body;
+      const table = document.getElementById("eventTable");
+      const headerSpan = document.getElementById("headerSpan");
+      const themeBtn = document.getElementById("themeToggle");
+      const icon = document.getElementById("themeIcon");
 
+      function applyTheme(mode) {
+        const isDark = mode === "dark";
+
+        body.classList.toggle("dark", isDark);
+        body.classList.toggle("light", !isDark);
+
+        if (table) table.classList.toggle("table-dark", isDark);
+
+        if (icon) {
+          icon.classList.toggle("fa-sun", !isDark);
+          icon.classList.toggle("fa-moon", isDark);
+        }
+
+        if (headerSpan) {
+          headerSpan.classList.toggle("mh1-light", !isDark);
+          headerSpan.classList.toggle("mh1-dark", isDark);
+        }
+
+        localStorage.setItem("themePreference", mode);
+      }
+
+      // load theme
+      applyTheme(localStorage.getItem("themePreference") || "light");
+
+      // bind theme toggle
+      if (themeBtn) {
+        themeBtn.addEventListener("click", () => {
+          const next = body.classList.contains("dark") ? "light" : "dark";
+          applyTheme(next);
+        });
+      }
+
+      // initial table render
+      populateTable(events);
+
+      // search
+      const search = document.getElementById("timelineSearch");
+      const count = document.getElementById("timelineCount");
+      const clearBtn = document.getElementById("clearSearch");
+
+      function render(list) {
+        populateTable(list);
+        if (count) count.textContent = `${list.length} events`;
+      }
+
+      if (search) {
+        search.addEventListener("input", () => {
+          const q = search.value.trim().toLowerCase();
+          const filtered = events.filter(ev =>
+            (`${ev.date} ${ev.event} ${ev.area}`).toLowerCase().includes(q)
+          );
+          render(filtered);
+        });
+      }
+
+      if (clearBtn && search) {
+        clearBtn.addEventListener("click", () => {
+          search.value = "";
+          search.dispatchEvent(new Event("input"));
+          search.focus();
+        });
+      }
+
+      // show initial count
+      render(events);
+    });
+  </script>
 </body>
 </html>

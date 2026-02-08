@@ -1,4 +1,6 @@
-/* fonts */
+/* =========================
+   Fonts
+   ========================= */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
@@ -7,7 +9,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Rosarivo&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-/* content */
+
+/* =========================
+   Base / Typography
+   ========================= */
 .logo h1 a { text-decoration: none; }
 
 .mh1-light{
@@ -15,14 +20,13 @@
   font-size: 1.1em;
   color: #14246E;
 }
-
 .mh1-dark{
   font-family: Rosarivo;
   font-size: 1.1em;
   color: #ffffff;
 }
 
-h3, h2 { font-family: 'Quicksand'; }
+h2, h3 { font-family: 'Quicksand'; }
 
 .exp{
   font-family: Nunito;
@@ -30,25 +34,270 @@ h3, h2 { font-family: 'Quicksand'; }
   line-height: 1;
 }
 
+#easteregg { text-decoration: none; }
+
+
+/* =========================
+   Search bar (timeline)
+   ========================= */
+#timelineSearch { height: 38px; }
+#timelineSearch::placeholder { opacity: .7; }
+
+/* Unified pill search bar */
+.input-group{
+  border-radius: 999px;
+  overflow: hidden; /* keeps pill clean */
+  border: 1px solid var(--bs-border-color);
+  background: var(--bs-body-bg);
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+/* Remove individual borders so the pill looks like one piece */
+.input-group > .input-group-text,
+.input-group > .form-control,
+.input-group > .btn{
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Left icon */
+.input-group-text{
+  background: transparent;
+  padding-left: 1rem;
+  padding-right: .5rem;
+  color: var(--bs-secondary-color);
+}
+
+/* Input field */
+#timelineSearch{
+  background: transparent;
+  padding-left: .25rem;
+}
+
+/* Clear button (x) - keep it inside the pill, no weird box */
+#clearSearch{
+  background: transparent;
+  padding-left: .75rem;
+  padding-right: 1rem;
+  color: var(--bs-secondary-color);
+  border-left: 1px solid rgba(var(--bs-body-color-rgb), .12) !important; /* subtle divider */
+}
+
+#clearSearch:hover{
+  color: var(--bs-body-color);
+}
+
+/* One nice focus ring on the whole pill */
+.input-group:focus-within{
+  border-color: rgba(var(--bs-primary-rgb), .55);
+  box-shadow: 0 0 0 .2rem rgba(var(--bs-primary-rgb), .18);
+}
+
+
+/* =========================
+   Table layout + readability
+   ========================= */
+.table-wrap{ max-width: 100%; }
+@media (min-width: 992px){  .table-wrap{ max-width: 1100px; } }
+@media (min-width: 1200px){ .table-wrap{ max-width: 1150px; } }
+
+/* Rounded table container */
+.table-responsive{
+  border-radius: 14px;
+  overflow: hidden;                 /* critical for rounded corners */
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  border: 1px solid var(--bs-border-color);
+}
+
+/* Dark mode adjustment */
+body.dark .table-responsive{
+  box-shadow: 0 8px 24px rgba(0,0,0,.45);
+  border-color: rgba(255,255,255,.15);
+}
+
+/* Column behaviors */
+#eventTable td:nth-child(1),
+#eventTable th:nth-child(1){
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+#eventTable td:nth-child(3){
+  color: rgba(var(--bs-body-color-rgb), .75);
+  font-size: .95em;
+}
+
+/* Event column (you asked: center) */
+#eventTable td:nth-child(2),
+#eventTable th:nth-child(2){
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Cap event width on larger screens (prevents huge empty space) */
+@media (min-width: 992px){
+  #eventTable th:nth-child(2),
+  #eventTable td:nth-child(2){
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 992px){
+
+/* Explicit column balance (desktop) */
+  #eventTable th:nth-child(1){ width: 18%; }
+  #eventTable th:nth-child(3){ width: 26%; }
+
+  #eventTable th:nth-child(1),
+  #eventTable td:nth-child(1) {
+    font-size: 0.95rem;
+  }
+
+  /* Row separators */
+  #eventTable tbody tr{
+    border-top: 1px solid var(--bs-border-color);
+  }
+}
+
+
+/* =========================
+   Mobile table (NO horizontal scroll, keep all info visible)
+   ========================= */
+@media (max-width: 576px){
+  #eventTable{
+    width: 100%;
+    table-layout: auto;
+    font-size: .95rem;
+  }
+
+  /* Allow wrapping so Region doesn't get cut off */
+  #eventTable th,
+  #eventTable td{
+    white-space: normal !important;
+    word-break: break-word;
+  }
+
+  /* Remove the desktop cap on event column for mobile */
+  #eventTable th:nth-child(2),
+  #eventTable td:nth-child(2){
+    max-width: none;
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+
+  /* Tighten padding overall so 3 columns fit */
+  #eventTable td{
+    padding: .5rem .5rem;
+  }
+
+  /* Rebalance widths on small screens */
+  #eventTable th:nth-child(1),
+  #eventTable td:nth-child(1){ 
+    width: 28%;
+    font-size: 0.85rem;
+  }
+
+  #eventTable th:nth-child(2),
+  #eventTable td:nth-child(2){ width: 40%; }
+
+  #eventTable th:nth-child(3),
+  #eventTable td:nth-child(3){ width: 32%; }
+}
+
+
+/* =========================
+   Timeline row interaction
+   ========================= */
+.timeline-row{
+  cursor: pointer;
+  transition: transform .06s ease;
+}
+.timeline-row:hover{
+  transform: translateY(-1px);
+}
+.timeline-row:focus{
+  outline: 2px solid var(--bs-primary);
+  outline-offset: -2px;
+}
+
+
+/* =========================
+   Flags (date prefixes)
+   ========================= */
+.flag-token{
+  font-weight: 600;
+  font-size: 0.95em;
+  letter-spacing: 0.02em;
+  font-style: italic;
+  opacity: .85;
+}
+
+.flag-l { color: #0d6efd; }  /* blue: legendary/uncertain */
+.flag-t { color: #00E600; }  /* green: traditional */
+.flag-a { color: #fd7e14; }  /* amber: approximate */
+
+.date-cell { white-space: nowrap; }
+
+
+/* =========================
+   Dark theme
+   ========================= */
+body.dark { background-color: #000; color: #fff; }
+
+/* Toggle button */
+.theme-toggle{
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.theme-toggle i{ font-size: 20px; color: #333; }
+body.dark .theme-toggle i{ color: #fff; }
+
+/* Dark theme table niceties */
+body.dark .table.table-dark{
+  --bs-border-color: rgba(255,255,255,0.15);
+}
+body.dark .table.table-dark.table-striped > tbody > tr:nth-of-type(odd) > *{
+  --bs-table-accent-bg: rgba(255,255,255,0.03);
+}
+body.dark .table.table-dark > :not(caption) > * > *{
+  border-color: rgba(255,255,255,0.12);
+}
+
+
+/* =========================
+   Images (general)
+   ========================= */
 .img-wrap { max-width: 65%; height: auto; margin: 1rem; }
 .img-left { float: left; margin-right: 1rem; }
 .img-right { float: right; margin-left: 1rem; }
-@media (max-width: 576px) {
-  .img-left, .img-right {
+
+@media (max-width: 576px){
+  .img-left, .img-right{
     float: none;
     margin: 0 auto 1rem;
     display: block;
   }
 }
 
-#easteregg { text-decoration: none; }
 
-/* footer */
+/* =========================
+   Footer
+   ========================= */
 .ftrtxt{ background: transparent; font-size: 1.5em; }
 .subtxt1{ font-family: Rosarivo; }
 .subtxt2{ font-family: Trajan Pro, Cinzel; }
-.footer {
-  background: #111111; color: white; 
+
+.footer{
+  background: #111111;
+  color: white;
   padding: 8vh 20vw;
   border-top: 2px solid #333333;
   box-shadow: 0 0 10px rgba(0,0,0,.5);
@@ -58,120 +307,63 @@ h3, h2 { font-family: 'Quicksand'; }
 }
 #cprtxt{ font-family: Lugrasimo; }
 
-/* dark theme */
-body.dark { background-color: #000; color: #fff; }
-
-/* toggle button */
-.theme-toggle {
-  width: 40px; height: 40px; border: none; background: transparent; cursor: pointer;
-  display: flex; justify-content: center; align-items: center; border-radius: 50%;
-}
-.theme-toggle i { font-size: 20px; color: #333; }
-body.dark .theme-toggle i { color: #fff; }
-
-/* flags: italic colored text (no background) */
-.flag-token {
-  font-weight: 600;
-  font-size: 0.95em;
-  letter-spacing: 0.02em;
-  font-style: italic;          /* ➜ NEW: italic */
-}
-.flag-l { color: #0d6efd; }    /* blue: legendary/uncertain */
-.flag-t { color: #00E600; }    /* green: traditional */
-.flag-a { color: #fd7e14; }    /* amber: approximate */
-
-.date-cell { white-space: nowrap; }
-
-/* clickable rows affordance */
-.timeline-row { cursor: pointer; }
-.timeline-row:hover { filter: brightness(0.98); }
-
-/* --- Dark theme table niceties --- */
-body.dark .table.table-dark {
-  /* Slightly lighter border so rows are readable in dark */
-  --bs-border-color: rgba(255,255,255,0.15);
-}
-
-body.dark .table.table-dark.table-striped > tbody > tr:nth-of-type(odd) > * {
-  /* very subtle striping in dark */
-  --bs-table-accent-bg: rgba(255,255,255,0.03);
-}
-
-body.dark .table.table-dark > :not(caption) > * > * {
-  /* ensure cell separators show up on dark */
-  border-color: rgba(255,255,255,0.12);
-}
 
 /* =========================
-   Paper document (only affects pages that use .doc-page)
-   Works with body.light/body.dark toggles site-wide
+   PDF article block
    ========================= */
-
-
-
-/* Integrated PDF content block (no special page container) */
 .pdf-article h2{
   font-family: "Times New Roman", Times, serif;
   font-weight: 700;
 }
-
 .pdf-article h4{
   font-family: "Times New Roman", Times, serif;
   font-weight: 700;
   margin-top: 1.25rem;
 }
 
+.pdf-article p{
+  font-size: 20px;
+}
+
+.pdf-article ul{
+  margin-top: 0.75rem;
+  font-size: 20px; /* list text */
+}
+
 .pdf-figure{
   margin: 1.25rem 0;
   text-align: center;
 }
-
 .pdf-figure img{
   max-width: 70%;
   height: auto;
   border-radius: 10px;
 }
-
-/* Optional: caption styling */
 .pdf-caption{
   margin-top: 0.5rem;
   font-size: 0.95rem;
   opacity: 0.85;
 }
 
-/* Optional: make list spacing nicer */
-.pdf-article ul{
-  margin-top: 0.75rem;
-}
 
-.pdf-article ul, p {
-  font-size: 20px;
-}
-
-------------------------------------------------------------s
-/* Diagram area */
+/* =========================
+   Diagram area
+   ========================= */
 .diagram-wrap{
   width: 100%;
-  overflow-x: auto;              /* allow scroll instead of shrinking */
+  overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Important: don't auto-shrink the SVG */
 .diagram-wrap svg{
-  width: max-content;            /* keep natural width */
+  width: max-content;
   height: auto;
   display: block;
-  margin: 0 auto;               /* center if it fits */
+  margin: 0 auto;
+  min-width: 1250px; /* adjust as needed */
 }
 
-/* Give the SVG a minimum readable width (tweak this number) */
-.diagram-wrap svg{
-  min-width: 1250px;            /* <- adjust: 1100 / 1200 / 1400 */
-}
-
-
-/* Optional: constrain max size on large screens */
 @media (min-width: 1200px){
   .diagram-wrap svg{
     max-width: 1200px;

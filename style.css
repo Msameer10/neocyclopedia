@@ -151,7 +151,7 @@ body.dark .table-responsive{
 
   #eventTable th:nth-child(1),
   #eventTable td:nth-child(1) {
-    font-size: 0.95rem;
+    font-size: 0.8rem;
   }
 
   /* Row separators */
@@ -168,7 +168,7 @@ body.dark .table-responsive{
   #eventTable{
     width: 100%;
     table-layout: auto;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
   }
 
   /* Allow wrapping so Region doesn't get cut off */

@@ -271,6 +271,51 @@ body.dark .table.table-dark > :not(caption) > * > *{
   border-color: rgba(255,255,255,0.12);
 }
 
+/* Event count text */
+body.dark #timelineCount,body.dark #countText {
+  color: rgba(255,255,255,.70);
+}
+
+/* Region column text (when table is dark) */
+body.dark #eventTable.table-dark td:nth-child(3){
+  color: rgba(255,255,255,.72) !important;
+}
+body.dark #eventTable.table-dark thead th{
+  color: rgba(255,255,255,.92);
+}
+body.dark .input-group{
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.18);
+}
+/* =========================
+   Dark mode: fix search icon background
+   ========================= */
+
+body.dark .input-group-text{
+  background: transparent;          /* remove white bubble */
+  color: rgba(255,255,255,.75);
+}
+
+/* Ensure no borders sneak in */
+body.dark .input-group-text,
+body.dark #timelineSearch,
+body.dark #clearSearch{
+  border: none;
+}
+
+body.dark .input-group-text,
+body.dark #clearSearch{
+  color: rgba(255,255,255,.75);
+}
+
+body.dark #timelineSearch{
+  color: #fff;
+  background: transparent;
+}
+
+body.dark #timelineSearch::placeholder{
+  color: rgba(255,255,255,.55);
+}
 
 /* =========================
    Images (general)

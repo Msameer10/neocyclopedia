@@ -168,7 +168,7 @@ body.dark .table-responsive{
   #eventTable{
     width: 100%;
     table-layout: auto;
-    font-size: .95rem;
+    font-size: 0.8rem;
   }
 
   /* Allow wrapping so Region doesn't get cut off */
@@ -195,7 +195,7 @@ body.dark .table-responsive{
   #eventTable th:nth-child(1),
   #eventTable td:nth-child(1){ 
     width: 28%;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
   }
 
   #eventTable th:nth-child(2),

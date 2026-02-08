@@ -151,7 +151,7 @@ body.dark .table-responsive{
 
   #eventTable th:nth-child(1),
   #eventTable td:nth-child(1) {
-    font-size: 0.8rem;
+    font-size: 0.88rem;
   }
 
   /* Row separators */
@@ -195,7 +195,7 @@ body.dark .table-responsive{
   #eventTable th:nth-child(1),
   #eventTable td:nth-child(1){ 
     width: 28%;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 
   #eventTable th:nth-child(2),

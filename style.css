@@ -205,6 +205,9 @@ body.dark .table-responsive{
   #eventTable td:nth-child(3){ width: 32%; }
 }
 
+.meta{
+  font-size: 0.8em;
+}
 
 /* =========================
    Timeline row interaction

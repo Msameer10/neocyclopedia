@@ -36,18 +36,6 @@
 
     <h3 class="mt-2 mb-2 text-center">Historical Timeline</h3>
 
-    <p class="mb-3 text-center small">
-      <a id="easteregg" href="misc/main.html">(click on any element of interest to know more…)</a>
-    </p>
-
-    <!-- Legend -->
-    <div class="text-center small mb-3">
-      <span class="flag-token flag-l">l.</span> <span class="me-2">legendary/uncertain</span>
-      <span class="flag-token flag-t">t.</span> <span class="me-2">traditionally dated</span>
-      <span class="flag-token flag-a">a.</span> <span class="me-2">approximate</span>
-      <span>(<em>c.</em> = circa)</span>
-    </div>
-
     <!-- Search bar -->
     <div class="row justify-content-center align-items-center g-2 m-2">
       <div class="col-12 col-md-9 col-lg-7">
@@ -74,8 +62,20 @@
       </div>
     </div>
 
+    <p class="mb-3 text-center small">
+      <a id="easteregg" href="misc/main.html">(click on any element of interest to know more…)</a>
+    </p>
+
+    <!-- Legend -->
+    <div class="text-center small mb-3">
+      <span class="flag-token flag-l">l.</span> <span class="me-2">legendary/uncertain</span>
+      <span class="flag-token flag-t">t.</span> <span class="me-2">traditionally dated</span>
+      <span class="flag-token flag-a">a.</span> <span class="me-2">approximate</span>
+      <span>(<em>c.</em> = circa)</span>
+    </div>
+
     <!-- Table -->
-    <div class="table-wrap mx-auto mt-5">
+    <div class="table-wrap mx-auto mt-2">
       <div class="table-responsive">
         <table id="eventTable" class="table table-sm table-hover table-striped align-middle text-center">
           <thead class="table-dark">
@@ -93,8 +93,8 @@
   </div>
 
   <!-- Meta -->
-  <p class="container text-center mt-5">Last edited: 2026 Feb 8</p>
-  <p class="container text-center mb-5">Version: 4.0</p>
+  <p class="container text-center mt-5 meta">Last edited: 2026 Feb 8</p>
+  <p class="container text-center mb-5 meta">Version: 4.0</p>
 
   <!-- Footer -->
   <div class="footer text-center mt-5">
@@ -122,8 +122,29 @@
 
     const events = [
       { flags: "a.", date: "c. 300000 BC", event: "Emergence of Homo sapiens", area: "Africa [Various regions]", url: "events/homosapiens.html" },
+
+      { flags: "", date: "630 AD", event: "Conquest of Mecca", area: "Mecca, Arabian Peninsula [Saudi Arabia]", url: "events/conquestOfMecca.html" },
+
+      { flags: "a.", date: "c. 1400 BC", event: "Assyrian state emerges as a regional empire", area: "Upper Mesopotamia [Iraq/Syria/Türkiye]", url: "events/assyrianEmpire.html" },
+
+      { flags: "a.", date: "c. 1900 BC", event: "Old Babylonian state emerges under Amorite dynasties", area: "Babylon, Mesopotamia [Iraq]", url: "events/babylonianEmpire.html" },
+
+      { flags: "t.", date: "516 BC", event: "Second Temple in Jerusalem completed under Cyrus' rule", area: "Jerusalem [Palestine]", url: "events/secondTempleConstruction.html" },
+
+      { flags: "l.t.", date: "c. 13th c. BC", event: "Second Exodus tradition", area: "Egypt → Levant [Egypt/Palestine]", url: "events/secondExodus.html" },
+
+      { flags: "a.", date: "c. 1917–1948 AD", event: "Israeli–Palestinian conflict emerges", area: "Palestine [Israel/Palestine]", url: "events/israeliPalestinianConflict.html" },
+
+      { flags: "", date: "2001 AD", event: "September 11 attacks", area: "United States [New York/Washington, D.C./Pennsylvania]", url: "events/911.html" },
+
+      { flags: "t.", date: "1981 AD", event: "IBM Personal Computer released", area: "United States", url: "events/ibmPC.html" },
+
+      { flags: "t.", date: "2007 AD", event: "Apple iPhone introduced", area: "United States", url: "events/iphone.html" },
+
       { flags: "", date: "1757 AD", event: "Battle of Plassey", area: "Bengal Subah [Mughal Bengal]", url: "events/.html" },
+
       { flags: "", date: "732 AD", event: "Battle of Tours", area: "Tours, France", url: "events/.html" },
+
       { flags: "a.", date: "c. 3500–3000 BC", event: "Invention of the wheel", area: "Various regions", url: "events/wheelInvention.html" },
 
       { flags: "l.t.", date: "c. 600 BC", event: "Hanging Gardens of Babylon", area: "Babylon [Iraq]", url: "events/hangingGardens.html" },

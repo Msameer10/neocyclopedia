@@ -1,37 +1,22 @@
-/* =========================
-   Fonts
-   ========================= */
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Lugrasimo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Tangerine&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rosarivo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-
 
 /* =========================
    Base / Typography
    ========================= */
 .logo h1 a { text-decoration: none; }
 
-.mh1-light{
+#headerSpan{
   font-family: Rosarivo;
   font-size: 1.1em;
   color: #14246E;
 }
-.mh1-dark{
-  font-family: Rosarivo;
-  font-size: 1.1em;
-  color: #ffffff;
-}
+body.dark #headerSpan{ color: #ffffff; }
 
 h2, h3 { font-family: 'Quicksand'; }
 
 .exp{
   font-family: Nunito;
   font-size: 20px;
-  line-height: 1;
+  line-height: 1.6;
 }
 
 #easteregg { text-decoration: none; }
@@ -237,16 +222,22 @@ body.dark .table-responsive{
 }
 
 .flag-l { color: #0d6efd; }  /* blue: legendary/uncertain */
-.flag-t { color: #00E600; }  /* green: traditional */
+.flag-t { color: #198754; }  /* green: traditional */
 .flag-a { color: #fd7e14; }  /* amber: approximate */
 
 .date-cell { white-space: nowrap; }
+
+/* Stub rows — article not yet written */
+.stub-row{
+  cursor: default;
+  opacity: 0.45;
+}
 
 
 /* =========================
    Dark theme
    ========================= */
-body.dark { background-color: #000; color: #fff; }
+body.dark { background-color: #111; color: #fff; }
 
 /* Toggle button */
 .theme-toggle{
@@ -260,8 +251,12 @@ body.dark { background-color: #000; color: #fff; }
   align-items: center;
   border-radius: 50%;
 }
-.theme-toggle i{ font-size: 20px; color: #333; }
-body.dark .theme-toggle i{ color: #fff; }
+.theme-toggle { color: #333; }
+body.dark .theme-toggle { color: #fff; }
+
+/* Show/hide sun vs moon purely via CSS */
+body.light #iconMoon { display: none; }
+body.dark  #iconSun  { display: none; }
 
 /* Dark theme table niceties */
 body.dark .table.table-dark{
@@ -346,12 +341,18 @@ body.dark #timelineSearch::placeholder{
 .footer{
   background: #111111;
   color: white;
-  padding: 8vh 20vw;
+  padding: 2.5rem 6vw;
   border-top: 2px solid #333333;
   box-shadow: 0 0 10px rgba(0,0,0,.5);
   font-family: Arial, sans-serif;
-  min-width: 100%;
+  width: 100%;
   margin: 0;
+}
+@media (min-width: 768px){
+  .footer{ padding: 2.5rem 12vw; }
+}
+@media (min-width: 1200px){
+  .footer{ padding: 2.5rem 20vw; }
 }
 #cprtxt{ font-family: Lugrasimo; }
 

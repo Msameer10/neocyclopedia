@@ -341,7 +341,7 @@ body.dark #timelineSearch::placeholder{
 .footer{
   background: #111111;
   color: white;
-  padding: 6vh 6vw;
+  padding: 2.5rem 6vw;
   border-top: 2px solid #333333;
   box-shadow: 0 0 10px rgba(0,0,0,.5);
   font-family: Arial, sans-serif;
@@ -349,10 +349,10 @@ body.dark #timelineSearch::placeholder{
   margin: 0;
 }
 @media (min-width: 768px){
-  .footer{ padding: 7vh 12vw; }
+  .footer{ padding: 2.5rem 12vw; }
 }
 @media (min-width: 1200px){
-  .footer{ padding: 8vh 20vw; }
+  .footer{ padding: 2.5rem 20vw; }
 }
 #cprtxt{ font-family: Lugrasimo; }
 

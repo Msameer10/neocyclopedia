@@ -103,6 +103,33 @@
       <span>(<em>c.</em> = circa)</span>
     </div>
 
+    <!-- Era filters -->
+    <div class="era-filters" role="group" aria-label="Filter timeline by historical era">
+      <button class="era-filter active" type="button" data-era="all" aria-pressed="true">All eras</button>
+      <button class="era-filter" type="button" data-era="prehistory" aria-pressed="false">Prehistory</button>
+      <button class="era-filter" type="button" data-era="ancient" aria-pressed="false">Ancient</button>
+      <button class="era-filter" type="button" data-era="medieval" aria-pressed="false">Medieval</button>
+      <button class="era-filter" type="button" data-era="early-modern" aria-pressed="false">Early Modern</button>
+      <button class="era-filter" type="button" data-era="modern" aria-pressed="false">Modern</button>
+    </div>
+
+    <div id="yearRangeControl" class="year-range-control" aria-label="Filter all eras by year range">
+      <div class="year-range-heading">
+        <span>Year range</span>
+        <div class="year-range-values" aria-label="Editable year range">
+          <input id="startYearInput" type="text" aria-label="Start year text value" spellcheck="false">
+          <span aria-hidden="true">–</span>
+          <input id="endYearInput" type="text" aria-label="End year text value" spellcheck="false">
+        </div>
+        <button id="resetYearRange" type="button">Reset</button>
+      </div>
+      <div class="dual-range">
+        <div class="dual-range-track" aria-hidden="true"><span id="yearRangeFill"></span></div>
+        <input id="startYearRange" type="range" aria-label="Start year">
+        <input id="endYearRange" type="range" aria-label="End year">
+      </div>
+    </div>
+
     <!-- Table -->
     <div class="table-wrap mx-auto mt-2">
       <div class="table-responsive">
@@ -203,6 +230,19 @@
       return (century - 1) * 100;
     }
 
+    const eraDefinitions = [
+      { id: "prehistory", label: "Prehistory", range: "Before 3000 BC", test: year => year < -3000 },
+      { id: "ancient", label: "Ancient World", range: "3000 BC–476 AD", test: year => year >= -3000 && year <= 476 },
+      { id: "medieval", label: "Medieval World", range: "477–1491", test: year => year >= 477 && year <= 1491 },
+      { id: "early-modern", label: "Early Modern World", range: "1492–1788", test: year => year >= 1492 && year <= 1788 },
+      { id: "modern", label: "Modern World", range: "1789–present", test: year => year >= 1789 }
+    ];
+
+    function getEra(ev) {
+      const year = normalizeDate(ev);
+      return eraDefinitions.find(era => era.test(year)) || eraDefinitions[eraDefinitions.length - 1];
+    }
+
     // ================= RENDERING =================
 
     function renderDateCell(ev) {
@@ -261,24 +301,48 @@
         tr.appendChild(td);
         fragment.appendChild(tr);
       } else {
+        let currentEra = null;
         for (const ev of sorted) {
+          const era = getEra(ev);
+          if (era.id !== currentEra) {
+            currentEra = era.id;
+            const eraRow = document.createElement("tr");
+            eraRow.className = "era-divider";
+            const eraCell = document.createElement("th");
+            eraCell.colSpan = 3;
+            eraCell.scope = "rowgroup";
+            eraCell.innerHTML = `<span>${era.label}</span><small>${era.range}</small>`;
+            eraRow.appendChild(eraCell);
+            fragment.appendChild(eraRow);
+          }
+
           const tr = document.createElement("tr");
           tr.className = "timeline-row";
-          tr.tabIndex = 0;
+          tr.dataset.era = era.id;
 
           const dateCell = document.createElement("td");
+          dateCell.dataset.label = "Date";
           dateCell.appendChild(renderDateCell(ev));
 
           const eventCell = document.createElement("td");
+          eventCell.dataset.label = "Event";
           eventCell.textContent = ev.event;
 
           const areaCell = document.createElement("td");
+          areaCell.dataset.label = "Region";
           areaCell.textContent = formatArea(ev.area);
 
           tr.append(dateCell, eventCell, areaCell);
 
           const hasValidUrl = ev.url && ev.url.trim() && ev.url.trim() !== "events/.html";
           if (hasValidUrl) {
+            tr.tabIndex = 0;
+            tr.setAttribute("role", "link");
+            const arrow = document.createElement("span");
+            arrow.className = "row-arrow";
+            arrow.setAttribute("aria-hidden", "true");
+            arrow.textContent = "→";
+            eventCell.appendChild(arrow);
             tr.addEventListener("click", () => window.location.href = ev.url);
             tr.addEventListener("keydown", (e) => {
               if (e.key === "Enter" || e.key === " ") {
@@ -338,26 +402,158 @@
       const search = document.getElementById("timelineSearch");
       const count = document.getElementById("timelineCount");
       const clearBtn = document.getElementById("clearSearch");
+      const eraButtons = document.querySelectorAll(".era-filter");
+      const yearRangeControl = document.getElementById("yearRangeControl");
+      const startYearRange = document.getElementById("startYearRange");
+      const endYearRange = document.getElementById("endYearRange");
+      const startYearInput = document.getElementById("startYearInput");
+      const endYearInput = document.getElementById("endYearInput");
+      const yearRangeFill = document.getElementById("yearRangeFill");
+      const resetYearRange = document.getElementById("resetYearRange");
+      let activeEra = "all";
+
+      const eventYears = [...new Set(events.map(normalizeDate).filter(Number.isFinite))].sort((a, b) => a - b);
+      const lastYearIndex = eventYears.length - 1;
+      let selectedStartYear = eventYears[0];
+      let selectedEndYear = eventYears[lastYearIndex];
+      startYearRange.min = 0;
+      startYearRange.max = lastYearIndex;
+      startYearRange.value = 0;
+      endYearRange.min = 0;
+      endYearRange.max = lastYearIndex;
+      endYearRange.value = lastYearIndex;
+
+      function formatYear(year) {
+        if (year < 0) return `${Math.abs(year).toLocaleString()} BC`;
+        return `${Math.max(1, year).toLocaleString()} AD`;
+      }
+
+      function parseYear(value) {
+        const cleaned = value.toLowerCase().replace(/,/g, "").replace(/^c\.\s*/, "").trim();
+        const match = cleaned.match(/-?\d+/);
+        if (!match) return null;
+        const number = Number(match[0]);
+        if (!Number.isFinite(number)) return null;
+        if (/\b(bc|bce)\b/.test(cleaned)) return -Math.abs(number);
+        if (/\b(ad|ce)\b/.test(cleaned)) return Math.abs(number);
+        return number;
+      }
+
+      function nearestYearIndex(year) {
+        let low = 0;
+        let high = lastYearIndex;
+        while (low < high) {
+          const mid = Math.floor((low + high) / 2);
+          if (eventYears[mid] < year) low = mid + 1;
+          else high = mid;
+        }
+        if (low > 0 && Math.abs(eventYears[low - 1] - year) <= Math.abs(eventYears[low] - year)) return low - 1;
+        return low;
+      }
+
+      function renderYearRangeControls() {
+        const startIndex = Number(startYearRange.value);
+        const endIndex = Number(endYearRange.value);
+        const startPercent = lastYearIndex ? (startIndex / lastYearIndex) * 100 : 0;
+        const endPercent = lastYearIndex ? (endIndex / lastYearIndex) * 100 : 100;
+        yearRangeFill.style.left = `${startPercent}%`;
+        yearRangeFill.style.right = `${100 - endPercent}%`;
+        startYearInput.value = formatYear(selectedStartYear);
+        endYearInput.value = formatYear(selectedEndYear);
+      }
+
+      function updateYearRange() {
+        let startIndex = Number(startYearRange.value);
+        let endIndex = Number(endYearRange.value);
+        if (startIndex > endIndex) {
+          if (document.activeElement === startYearRange) endYearRange.value = startIndex;
+          else startYearRange.value = endIndex;
+          startIndex = Number(startYearRange.value);
+          endIndex = Number(endYearRange.value);
+        }
+        selectedStartYear = eventYears[startIndex];
+        selectedEndYear = eventYears[endIndex];
+        renderYearRangeControls();
+        applyFilters();
+      }
+
+      function commitYearInput(which) {
+        const input = which === "start" ? startYearInput : endYearInput;
+        const parsed = parseYear(input.value);
+        if (parsed === null) {
+          renderYearRangeControls();
+          return;
+        }
+
+        const clamped = Math.min(eventYears[lastYearIndex], Math.max(eventYears[0], parsed));
+        if (which === "start") {
+          selectedStartYear = clamped;
+          if (selectedStartYear > selectedEndYear) selectedEndYear = selectedStartYear;
+        } else {
+          selectedEndYear = clamped;
+          if (selectedEndYear < selectedStartYear) selectedStartYear = selectedEndYear;
+        }
+
+        startYearRange.value = nearestYearIndex(selectedStartYear);
+        endYearRange.value = nearestYearIndex(selectedEndYear);
+        renderYearRangeControls();
+        applyFilters();
+      }
 
       function render(list) {
         populateTable(list);
         if (count) count.textContent = `${list.length} events`;
       }
 
-      if (search) {
-        search.addEventListener("input", () => {
-          const q = search.value.trim().toLowerCase();
-          const filtered = events.filter(ev =>
-            (`${ev.date} ${ev.event} ${ev.area}`).toLowerCase().includes(q)
-          );
-          render(filtered);
+      function applyFilters() {
+        const q = search ? search.value.trim().toLowerCase() : "";
+        const filtered = events.filter(ev => {
+          const matchesSearch = (`${ev.date} ${ev.event} ${ev.area}`).toLowerCase().includes(q);
+          const matchesEra = activeEra === "all" || getEra(ev).id === activeEra;
+          const eventYear = normalizeDate(ev);
+          const matchesYearRange = activeEra !== "all" || (eventYear >= selectedStartYear && eventYear <= selectedEndYear);
+          return matchesSearch && matchesEra && matchesYearRange;
         });
+        render(filtered);
       }
+
+      if (search) {
+        search.addEventListener("input", applyFilters);
+      }
+
+      eraButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          activeEra = button.dataset.era;
+          eraButtons.forEach(item => {
+            const selected = item === button;
+            item.classList.toggle("active", selected);
+            item.setAttribute("aria-pressed", String(selected));
+          });
+          yearRangeControl.hidden = activeEra !== "all";
+          applyFilters();
+        });
+      });
+
+      startYearRange.addEventListener("input", updateYearRange);
+      endYearRange.addEventListener("input", updateYearRange);
+      startYearInput.addEventListener("change", () => commitYearInput("start"));
+      endYearInput.addEventListener("change", () => commitYearInput("end"));
+      startYearInput.addEventListener("keydown", event => {
+        if (event.key === "Enter") { event.preventDefault(); commitYearInput("start"); startYearInput.blur(); }
+      });
+      endYearInput.addEventListener("keydown", event => {
+        if (event.key === "Enter") { event.preventDefault(); commitYearInput("end"); endYearInput.blur(); }
+      });
+      resetYearRange.addEventListener("click", () => {
+        startYearRange.value = 0;
+        endYearRange.value = lastYearIndex;
+        updateYearRange();
+      });
 
       if (clearBtn && search) {
         clearBtn.addEventListener("click", () => {
           search.value = "";
-          search.dispatchEvent(new Event("input"));
+          applyFilters();
           search.focus();
         });
       }
@@ -371,7 +567,7 @@
         }
       });
       // show initial count
-      render(events);
+      updateYearRange();
     });
   </script>
 </body>

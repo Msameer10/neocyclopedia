@@ -13,6 +13,9 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <!-- Original CSS -->
 <link rel="stylesheet" type="text/css" href="../style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <title>Neocyclopedia</title>
 </head>
 <body class="light">
@@ -35,12 +38,14 @@
 
   <!-- Content -->
 
-<div class="mt-5 mb-5">
-  <h2>Port or Not? World Capitals by the Water's Edge</h2>
-  <p class="exp mt-3">
+<main class="port-article mt-5 mb-5">
+  <header class="port-masthead"><h1>Port or Not? World Capitals by the Water's Edge</h1></header>
+  <section class="port-content">
+  <p class="port-intro">
   Explore this list to discover which world capitals are situated along the shores of seas and oceans. Fair warning, this list might suprise you.
-  <br><br>
-  <span style="font-size: 14px;">Note: This total comprises 193 countries that are <a href="https://www.un.org/en/about-us/member-states">member states of the United Nations</a> and 2 countries that are non-member observer states: the Holy See and the State of Palestine and 1 dependency state: Taiwan, in alphabetical order. Not in the list - <a href="https://www.worldometers.info/geography/countries-of-the-world/#example">click here to know who they are</a>.</span>
+  <span class="port-note">Note: This total comprises 193 countries that are <a href="https://www.un.org/en/about-us/member-states">member states of the United Nations</a> and 2 countries that are non-member observer states: the Holy See and the State of Palestine and 1 dependency state: Taiwan, in alphabetical order. Not in the list - <a href="https://www.worldometers.info/geography/countries-of-the-world/#example">click here to know who they are</a>.</span>
+  </p>
+  <div class="table-shell">
   <table id="eventTable" class="table text-center table-bordered table-responsive-sm table-striped">
     <thead class="table-dark"><tr><th scope="col">Country</th><th scope="col">Capital</th><th scope="col">Port or Not</th></tr></thead>
     <tbody id="eventTableBody">
@@ -241,14 +246,15 @@
       <tr><td>Zambia</td><td>Lusaka</td><td>Not a Port</td></tr>
       <tr><td>Zimbabwe</td><td>Harare</td><td>Not a Port</td></tr>
     </tbody>
-  </table><br>
-  </p>
-  <p class="text-center" style="font-size: 18px;">
+  </table>
+  </div>
+  <p class="port-summary">
     <b>Total:</b> 196 <br>
     <b>Port:</b> 86 <br>
     <b>Not a Port:</b> 110 <br>
   </p>
-</div>
+  </section>
+</main>
 
 </div>
 

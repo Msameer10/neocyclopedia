@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://neocyclopedia.sameerion.com/sitemap.xml

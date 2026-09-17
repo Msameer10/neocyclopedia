@@ -676,6 +676,21 @@ body.dark .archive-masthead > p:last-child { color: rgba(255,255,255,.64); }
 .archive-section-heading span { color: rgba(var(--bs-body-color-rgb),.5); font: 700 .68rem Nunito,sans-serif; letter-spacing: .08em; text-transform: uppercase; }
 body.dark .archive-section-heading span { color: rgba(255,255,255,.45); }
 
+.archive-search { display: flex; align-items: center; justify-content: flex-end; gap: .45rem; min-height: 2.75rem; margin: 0 0 1.1rem; }
+.archive-search-input { box-sizing: border-box; width: 0; min-width: 0; height: 2.5rem; padding: 0; border: 0 solid rgba(128,128,128,.35); border-radius: 999px; background: var(--bs-body-bg); color: var(--bs-body-color); opacity: 0; visibility: hidden; pointer-events: none; font: 600 .82rem Nunito,sans-serif; transition: width .28s ease, padding .28s ease, opacity .2s ease, visibility 0s .28s; }
+.archive-search.is-open .archive-search-input { width: min(17rem, calc(100vw - 7rem)); padding: .45rem .85rem; border-width: 1px; opacity: 1; visibility: visible; pointer-events: auto; transition: width .28s ease, padding .28s ease, opacity .2s ease; }
+.archive-search-input:focus-visible { outline: 2px solid #a77b46; outline-offset: 2px; }
+.archive-search-toggle { display: grid; flex: 0 0 2.5rem; width: 2.5rem; height: 2.5rem; place-items: center; border: 1px solid rgba(128,128,128,.35); border-radius: 50%; background: var(--bs-body-bg); color: #966b38; cursor: pointer; transition: border-color .2s ease, background-color .2s ease; }
+.archive-search-toggle:hover { border-color: #a77b46; background: rgba(167,123,70,.12); }
+.archive-search-toggle:focus-visible { outline: 2px solid #a77b46; outline-offset: 2px; }
+.archive-close-icon { display: none; }
+.archive-search.is-open .archive-search-icon { display: none; }
+.archive-search.is-open .archive-close-icon { display: block; }
+.archive-no-results { margin: 1rem 0 0; padding: 2rem 1rem; border: 1px dashed rgba(128,128,128,.35); border-radius: 10px; color: rgba(var(--bs-body-color-rgb),.68); text-align: center; font: .9rem/1.6 "Libre Baskerville",Georgia,serif; }
+body.dark .archive-search-toggle { color: #d2a569; }
+body.dark .archive-no-results { color: rgba(255,255,255,.68); }
+@media (prefers-reduced-motion: reduce) { .archive-search-input, .archive-search.is-open .archive-search-input, .archive-search-toggle { transition: none; } }
+
 .archive-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.1rem; }
 .archive-card-featured { grid-column: 1 / -1; }
 .archive-card { min-height: 100%; overflow: hidden; border: 1px solid rgba(128,128,128,.28); border-radius: 10px; background: rgba(255,255,255,.64); box-shadow: 0 12px 34px rgba(33,25,16,.08); transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }

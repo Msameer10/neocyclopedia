@@ -46,8 +46,17 @@
     <section class="archive-collection" aria-labelledby="archiveCollectionTitle">
       <div class="archive-section-heading">
         <h2 id="archiveCollectionTitle">Articles &amp; Reference Projects</h2>
-        <span>6 entries</span>
+        <span id="archiveResultCount" aria-live="polite">6 entries</span>
       </div>
+
+      <form class="archive-search" role="search" aria-label="Search article titles">
+        <label class="visually-hidden" for="archiveSearchInput">Search article titles</label>
+        <input id="archiveSearchInput" class="archive-search-input" type="search" placeholder="Search titles…" autocomplete="off" tabindex="-1">
+        <button id="archiveSearchToggle" class="archive-search-toggle" type="button" aria-label="Open title search" aria-expanded="false" aria-controls="archiveSearchInput">
+          <svg class="archive-search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.398 1.398l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.117-.116zM6.5 11a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>
+          <svg class="archive-close-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2.146 2.854a.5.5 0 0 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854z"/></svg>
+        </button>
+      </form>
 
       <div class="archive-grid">
         <article class="archive-card archive-card-featured">
@@ -134,7 +143,7 @@
           </a>
         </article>
       </div>
-      <p class="small text-body-secondary mt-3">Cover images: <a href="https://commons.wikimedia.org/wiki/File:Copenhagen,_Nyhavn.jpg" target="_blank" rel="noopener noreferrer">Nyhavn, Copenhagen</a> by Gerda Arendt; <a href="https://commons.wikimedia.org/wiki/File:Jerusalem_Modell_BW_2.JPG" target="_blank" rel="noopener noreferrer">Second Temple model</a> by Berthold Werner. Both via Wikimedia Commons.</p>
+      <p id="archiveNoResults" class="archive-no-results" role="status" hidden>No articles match that title.</p>
     </section>
 
     <nav class="archive-return" aria-label="Return to timeline">
@@ -147,5 +156,6 @@
     <p>Copyright &copy; <span id="cprtxt"></span> <span class="subtxt1">Neocyclopedia</span>. All rights reserved.</p>
   </footer>
   <script src="../theme.js"></script>
+  <script src="archive-search.js" defer></script>
 </body>
 </html>

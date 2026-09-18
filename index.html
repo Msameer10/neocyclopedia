@@ -29,7 +29,12 @@
 <meta property="og:title" content="Neocyclopedia | Explore the Historical Timeline">
 <meta property="og:description" content="Explore a searchable historical timeline from prehistory to the modern era, with events across civilizations, empires, and world regions.">
 <meta property="og:url" content="https://neocyclopedia.sameerion.com/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://neocyclopedia.sameerion.com/assets/neocyclopedia-social.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Neocyclopedia historical timeline and essays">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://neocyclopedia.sameerion.com/assets/neocyclopedia-social.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Neocyclopedia | Explore the Historical Timeline","description":"Explore a searchable historical timeline from prehistory to the modern era, with events across civilizations, empires, and world regions.","url":"https://neocyclopedia.sameerion.com/"}</script>
 </head>
 
@@ -288,6 +293,7 @@
 
     function populateTable(list) {
       const sorted = sortEvents(list);
+      const publishedEventUrls = new Set(["events/homoSapiens.html"]);
       const tbody = document.getElementById("eventTableBody");
       tbody.innerHTML = "";
 
@@ -327,7 +333,16 @@
 
           const eventCell = document.createElement("td");
           eventCell.dataset.label = "Event";
-          eventCell.textContent = ev.event;
+          const hasValidUrl = publishedEventUrls.has(ev.url);
+          if (hasValidUrl) {
+            const eventLink = document.createElement("a");
+            eventLink.href = ev.url;
+            eventLink.className = "event-title-link";
+            eventLink.textContent = ev.event;
+            eventCell.appendChild(eventLink);
+          } else {
+            eventCell.textContent = ev.event;
+          }
 
           const areaCell = document.createElement("td");
           areaCell.dataset.label = "Region";
@@ -335,21 +350,15 @@
 
           tr.append(dateCell, eventCell, areaCell);
 
-          const hasValidUrl = ev.url && ev.url.trim() && ev.url.trim() !== "events/.html";
           if (hasValidUrl) {
-            tr.tabIndex = 0;
-            tr.setAttribute("role", "link");
             const arrow = document.createElement("span");
             arrow.className = "row-arrow";
             arrow.setAttribute("aria-hidden", "true");
             arrow.textContent = "→";
             eventCell.appendChild(arrow);
-            tr.addEventListener("click", () => window.location.href = ev.url);
-            tr.addEventListener("keydown", (e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                e.preventDefault();
-                window.location.href = ev.url;
-              }
+            tr.addEventListener("click", (e) => {
+              if (e.target.closest("a")) return;
+              window.location.href = ev.url;
             });
           } else {
             tr.classList.add("stub-row");

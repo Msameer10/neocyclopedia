@@ -9,7 +9,7 @@
  */
 
     const events = [
-      { flags: "a.", date: "c. 300000 BC", event: "Emergence of Homo sapiens", area: "Africa [Various regions]", url: "events/homosapiens.html" },
+      { flags: "a.", date: "c. 300000 BC", event: "Emergence of Homo sapiens", area: "Africa [Various regions]", url: "events/homoSapiens.html" },
 
       { flags: "", date: "630 AD", event: "Conquest of Mecca", area: "Mecca, Arabian Peninsula [Saudi Arabia]", url: "events/conquestOfMecca.html" },
 

@@ -17,3 +17,9 @@ User-Friendly Interface: With a minimalist design and intuitive navigation, Neoc
 Regular Updates: The team behind Neocyclopedia is dedicated to maintaining and updating the timeline regularly. Users can rely on this platform for access to the latest information and insights in the field of history.
 
 Experience the past in a clear and straightforward manner with Neocyclopedia. Start exploring today and unlock a deeper understanding of the fascinating tapestry of human history.
+
+## Search visibility
+
+Run `python scripts/audit_seo.py` before publishing. It checks indexable pages for titles, descriptions, canonical URLs, structured data, image alt text, local links, and sitemap coverage.
+
+Most event pages are unfinished placeholders marked `noindex`. When an event article is ready, remove its `noindex` tag, add its canonical URL and metadata, include it in `sitemap.xml`, and add its URL to `publishedEventUrls` in `index.html` so the timeline links to it.

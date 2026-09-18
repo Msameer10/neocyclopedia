@@ -18,6 +18,10 @@
       card.hidden = !matches;
       if (matches) visible++;
     });
+    cards.forEach(card => card.classList.remove('archive-card-single'));
+    const visibleCards = cards.filter(card => !card.hidden);
+    const pairedCards = visibleCards[0] === cards[0] ? visibleCards.slice(1) : visibleCards;
+    if (pairedCards.length % 2 === 1) pairedCards.at(-1).classList.add('archive-card-single');
     count.textContent = `${visible} ${visible === 1 ? 'entry' : 'entries'}`;
     noResults.hidden = visible !== 0;
   }
@@ -45,4 +49,5 @@
     }
   });
   search.addEventListener('submit', event => event.preventDefault());
+  filterTitles();
 })();
